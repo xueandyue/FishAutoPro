@@ -3,1152 +3,1127 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FishAutoPro 功能说明</title>
+  <title>FishAutoPro 产品介绍</title>
   <style>
     :root {
-      --bg: #f6f8fc;
-      --card: #ffffff;
-      --line: #e5eaf3;
+      --bg: #f4efe6;
+      --panel: rgba(255, 252, 246, 0.92);
+      --panel-strong: #fffaf2;
       --text: #1f2937;
-      --muted: #64748b;
-      --primary: #0f766e;
-      --primary-soft: #e6fffb;
-      --warn: #b45309;
+      --muted: #5b6472;
+      --line: rgba(133, 99, 54, 0.16);
+      --brand: #155e75;
+      --brand-2: #b45309;
+      --brand-3: #0f766e;
+      --accent: #fff1d6;
+      --shadow: 0 18px 60px rgba(58, 43, 25, 0.10);
+      --radius-lg: 28px;
+      --radius-md: 18px;
+      --radius-sm: 12px;
+      --max: 1180px;
     }
 
     * {
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      background: var(--bg);
       color: var(--text);
-      font-family: "PingFang SC", "Microsoft YaHei", "Segoe UI", Arial, sans-serif;
-      line-height: 1.65;
+      font: 16px/1.7 "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(21, 94, 117, 0.10), transparent 28%),
+        radial-gradient(circle at top right, rgba(180, 83, 9, 0.13), transparent 24%),
+        linear-gradient(180deg, #f8f3ea 0%, #f1eadf 100%);
+    }
+
+    a {
+      color: inherit;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
     }
 
     .page {
-      max-width: 1100px;
+      width: min(calc(100% - 32px), var(--max));
       margin: 0 auto;
-      padding: 28px 16px 60px;
+      padding: 24px 0 72px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+      padding: 14px 18px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 250, 242, 0.72);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 10px 40px rgba(69, 52, 33, 0.06);
+      position: sticky;
+      top: 14px;
+      z-index: 20;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      min-width: 0;
+    }
+
+    .brand strong {
+      font-size: 18px;
+      letter-spacing: 0.02em;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: #334155;
+      font-size: 14px;
+      padding: 8px 12px;
+      border-radius: 999px;
+    }
+
+    .nav a:hover {
+      background: rgba(21, 94, 117, 0.08);
+    }
+
+    .cta-mini {
+      background: #163d46;
+      color: #fff;
     }
 
     .hero {
-      background: linear-gradient(135deg, #0f766e 0%, #155e75 100%);
-      color: #ffffff;
-      border-radius: 16px;
-      padding: 22px 22px 18px;
-      box-shadow: 0 8px 24px rgba(15, 118, 110, 0.2);
-    }
-
-    .hero h1 {
-      margin: 0;
-      font-size: 30px;
-      line-height: 1.2;
-    }
-
-    .hero p {
-      margin: 10px 0 0;
-      color: rgba(255, 255, 255, 0.92);
-    }
-
-    .meta {
-      margin-top: 10px;
-      font-size: 13px;
-      color: rgba(255, 255, 255, 0.88);
-    }
-
-    .card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 18px 18px 12px;
-      margin-top: 14px;
-    }
-
-    h2 {
-      margin: 0 0 8px;
-      font-size: 21px;
-    }
-
-    h3 {
-      margin: 14px 0 6px;
-      font-size: 16px;
-      color: #0b4f49;
-    }
-
-    p {
-      margin: 8px 0;
-    }
-
-    ul {
-      margin: 8px 0 10px;
-      padding-left: 20px;
-    }
-
-    li {
-      margin: 4px 0;
-      color: #334155;
-    }
-
-    .muted {
-      color: var(--muted);
-    }
-
-    .quick-nav {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
-      gap: 8px;
-      margin-top: 8px;
-      padding: 0;
-      list-style: none;
+      grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
+      gap: 22px;
+      align-items: stretch;
+      margin-bottom: 22px;
     }
 
-    .quick-nav a {
-      display: block;
+    .hero-main,
+    .hero-side,
+    .section,
+    .download-card,
+    .gallery-card {
       border: 1px solid var(--line);
-      background: #fbfdff;
-      border-radius: 10px;
-      padding: 8px 10px;
-      color: #0f5f58;
-      text-decoration: none;
-      font-size: 14px;
+      border-radius: var(--radius-lg);
+      background: var(--panel);
+      backdrop-filter: blur(14px);
+      box-shadow: var(--shadow);
     }
 
-    .quick-nav a:hover {
-      border-color: #b8ece5;
-      background: var(--primary-soft);
-    }
-
-    .pill {
-      display: inline-block;
-      font-size: 12px;
-      border-radius: 999px;
-      padding: 2px 8px;
-      margin-right: 6px;
-      border: 1px solid #cfe4ff;
-      background: #eef5ff;
-      color: #225ea8;
-    }
-
-    .pill.warn {
-      border-color: #f4d7b8;
-      background: #fff6ea;
-      color: var(--warn);
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 8px;
-      font-size: 14px;
-      overflow: hidden;
-      border-radius: 10px;
-      border: 1px solid var(--line);
-    }
-
-    th, td {
-      border-bottom: 1px solid var(--line);
-      padding: 9px 10px;
-      text-align: left;
-      vertical-align: top;
-    }
-
-    th {
-      background: #f8fbff;
-      font-weight: 600;
-      color: #0f4a8a;
-    }
-
-    tr:last-child td {
-      border-bottom: none;
-    }
-
-    .foot {
-      margin-top: 18px;
-      font-size: 13px;
-      color: var(--muted);
-    }
-
-    .download-spotlight {
-      border: 1px solid #ffd69b;
-      background: linear-gradient(140deg, #fff7eb 0%, #ffffff 55%);
-      box-shadow: 0 10px 26px rgba(180, 83, 9, 0.12);
+    .hero-main {
+      padding: 34px;
+      background:
+        linear-gradient(135deg, rgba(21, 94, 117, 0.96) 0%, rgba(15, 118, 110, 0.90) 56%, rgba(180, 83, 9, 0.84) 100%);
+      color: #fff;
       position: relative;
       overflow: hidden;
     }
 
-    .download-spotlight::after {
+    .hero-main::after {
       content: "";
       position: absolute;
-      top: -36px;
-      right: -36px;
-      width: 120px;
-      height: 120px;
-      background: radial-gradient(circle, rgba(251, 191, 36, 0.2), rgba(251, 191, 36, 0));
-      pointer-events: none;
+      inset: auto -70px -110px auto;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.10);
+      filter: blur(8px);
     }
 
-    .download-badge {
+    .eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      font-size: 12px;
-      padding: 3px 10px;
+      gap: 8px;
+      padding: 7px 12px;
       border-radius: 999px;
-      color: #92400e;
-      background: #ffedd5;
-      border: 1px solid #fed7aa;
-      margin-bottom: 8px;
-      font-weight: 600;
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      font-size: 13px;
+      margin-bottom: 18px;
     }
 
-    .download-promo {
-      display: inline-block;
-      margin: 2px 0 8px;
-      padding: 5px 10px;
-      border-radius: 999px;
-      background: #ffedd5;
-      border: 1px solid #fdba74;
-      color: #9a3412;
-      font-weight: 700;
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(32px, 5vw, 52px);
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      max-width: 10em;
+    }
+
+    .hero-lead {
+      margin: 18px 0 0;
+      font-size: 17px;
+      color: rgba(255, 255, 255, 0.92);
+      max-width: 42em;
+    }
+
+    .hero-points {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin: 24px 0 0;
+    }
+
+    .hero-points div {
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.10);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       font-size: 14px;
     }
 
-    .download-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
       gap: 12px;
-      margin-top: 10px;
+      margin-top: 24px;
+    }
+
+    .btn,
+    .btn-secondary,
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: none;
+      text-decoration: none;
+      border-radius: 999px;
+      padding: 12px 18px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+    }
+
+    .btn:hover,
+    .btn-secondary:hover,
+    .btn-ghost:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn {
+      background: #fff;
+      color: #0f4d5d;
+      box-shadow: 0 10px 30px rgba(16, 24, 40, 0.18);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.14);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--brand);
+      border: 1px solid rgba(21, 94, 117, 0.20);
+    }
+
+    .hero-side {
+      padding: 26px;
+      display: grid;
+      gap: 16px;
+      align-content: start;
+      background: linear-gradient(180deg, rgba(255, 250, 242, 0.96), rgba(255, 246, 236, 0.92));
+    }
+
+    .side-badge {
+      display: inline-flex;
+      width: fit-content;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      background: #fff2df;
+      color: #9a4f10;
+      border: 1px solid rgba(180, 83, 9, 0.18);
+    }
+
+    .side-title {
+      margin: 0;
+      font-size: 24px;
+      line-height: 1.25;
+    }
+
+    .side-list {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .side-list li {
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: #fffdfa;
+      border: 1px solid rgba(133, 99, 54, 0.12);
+      color: #3a4453;
+    }
+
+    .grid {
+      display: grid;
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .grid.cols-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .grid.cols-4 {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .section {
+      padding: 28px;
+      margin-top: 22px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(24px, 3vw, 34px);
+      line-height: 1.12;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 46em;
+    }
+
+    .card {
+      padding: 20px;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(133, 99, 54, 0.12);
+      background: rgba(255, 255, 255, 0.75);
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+    }
+
+    .card p {
+      margin: 0;
+      color: #465061;
+    }
+
+    .workflow-highlight {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .workflow-stage {
+      padding: 24px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, #fffdf9 0%, #fff7ea 100%);
+      border: 1px solid rgba(180, 83, 9, 0.16);
+    }
+
+    .stage-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 9px 12px;
+      border-radius: 999px;
+      background: #ffffff;
+      border: 1px solid rgba(21, 94, 117, 0.14);
+      color: #1f3f4d;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .workflow-example {
+      padding: 24px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, #1c3441 0%, #1f2937 100%);
+      color: #f9fafb;
+      overflow: hidden;
+    }
+
+    .flow-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .flow-item {
+      display: flex;
+      gap: 12px;
+      align-items: start;
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .flow-no {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.18);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+    }
+
+    .metric {
+      padding: 18px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.82), rgba(255,249,240,0.92));
+      border: 1px solid rgba(133, 99, 54, 0.12);
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 30px;
+      line-height: 1;
+      margin-bottom: 8px;
+      color: #154e63;
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .module-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .module-item {
+      padding: 18px 18px 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.78);
+      border: 1px solid rgba(133, 99, 54, 0.12);
+    }
+
+    .module-item strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 17px;
+      color: #173b49;
+    }
+
+    .module-item p {
+      margin: 0;
+      color: #465061;
+    }
+
+    .download-wrap {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .download-card,
+    .gallery-card {
+      padding: 24px;
+    }
+
+    .download-card h3,
+    .gallery-card h3 {
+      margin: 0 0 10px;
+      font-size: 24px;
+    }
+
+    .download-note {
+      margin: 0 0 16px;
+      color: var(--muted);
     }
 
     .download-source {
-      border: 1px solid #f2ddc0;
-      border-radius: 12px;
-      background: #ffffff;
-      padding: 12px;
+      margin-top: 16px;
+      padding: 16px;
+      border-radius: 18px;
+      background: #fffdfa;
+      border: 1px solid rgba(133, 99, 54, 0.12);
     }
 
-    .download-source h3 {
-      margin-top: 0;
-      color: #92400e;
+    .download-source h4 {
+      margin: 0 0 8px;
+      font-size: 18px;
     }
 
-    .download-code {
-      background: #f8fafc;
-      border: 1px dashed #cbd5e1;
-      border-radius: 10px;
-      padding: 8px 10px;
-      font-size: 13px;
-      color: #334155;
+    .download-text {
+      margin: 0;
+      padding: 14px;
+      border-radius: 14px;
+      background: #fff8ed;
+      border: 1px dashed rgba(180, 83, 9, 0.25);
       white-space: pre-wrap;
       word-break: break-all;
+      font-size: 14px;
+      color: #4b5563;
     }
 
     .download-actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 10px;
+      gap: 10px;
+      margin-top: 12px;
     }
 
-    .btn-download,
-    .btn-copy,
-    .btn-ghost {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 10px;
-      border: 1px solid transparent;
-      padding: 8px 12px;
-      font-size: 13px;
-      text-decoration: none;
-      cursor: pointer;
-      min-height: 36px;
-      font-family: inherit;
-    }
-
-    .btn-download {
-      color: #ffffff;
-      background: #ea580c;
-      border-color: #ea580c;
-    }
-
-    .btn-download:hover {
-      background: #c2410c;
-      border-color: #c2410c;
-    }
-
-    .btn-copy {
-      background: #ffffff;
-      color: #9a3412;
-      border-color: #fdba74;
-    }
-
-    .btn-copy:hover {
-      background: #fff7ed;
-    }
-
-    .btn-ghost {
-      background: #f8fafc;
-      color: #334155;
-      border-color: #cbd5e1;
-    }
-
-    .btn-ghost:hover {
-      background: #f1f5f9;
-    }
-
-    .btn-modal-ack {
-      flex: 0 1 240px;
-      margin: 8px auto 0;
-      background: #e0f2fe;
-      border-color: #93c5fd;
-      color: #1d4ed8;
-      font-weight: 600;
-    }
-
-    .btn-modal-ack:hover {
-      background: #dbeafe;
-      border-color: #60a5fa;
-    }
-
-    .download-status {
-      margin-top: 8px;
-      font-size: 13px;
-      color: #0f766e;
-      min-height: 20px;
-    }
-
-    .preview-showcase {
-      border: 1px solid #dbeafe;
-      background: linear-gradient(145deg, #f8fbff 0%, #ffffff 55%);
-    }
-
-    .preview-grid {
+    .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 14px;
-      margin-top: 10px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
     }
 
-    .preview-item {
-      margin: 0;
-    }
-
-    .preview-button {
-      width: 100%;
-      border: 1px solid #cbd5e1;
-      border-radius: 12px;
+    .preview {
+      border: none;
       padding: 0;
-      background: #ffffff;
-      cursor: zoom-in;
-      overflow: hidden;
-      position: relative;
-      display: block;
-    }
-
-    .preview-button img {
-      display: block;
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      object-fit: cover;
-      background: #e2e8f0;
-    }
-
-    .preview-button.qr img {
-      aspect-ratio: 16 / 9;
-      object-fit: contain;
-      background: #f8fafc;
-      padding: 12px;
-    }
-
-    .preview-button::after {
-      content: "点击查看大图";
-      position: absolute;
-      right: 10px;
-      bottom: 10px;
-      background: rgba(15, 23, 42, 0.65);
-      color: #ffffff;
-      font-size: 12px;
-      border-radius: 999px;
-      padding: 2px 10px;
-      letter-spacing: 0.2px;
-    }
-
-    .preview-item figcaption {
-      margin-top: 7px;
-      font-size: 13px;
-      color: #475569;
-    }
-
-    .image-lightbox-backdrop {
-      position: fixed;
-      inset: 0;
-      z-index: 1300;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      background: rgba(15, 23, 42, 0.82);
-      padding: 16px;
-    }
-
-    .image-lightbox-backdrop.show {
-      display: flex;
-    }
-
-    .image-lightbox {
-      width: min(96vw, 1500px);
-      max-height: 96vh;
-      background: #0f172a;
-      border-radius: 12px;
-      overflow: hidden;
-      position: relative;
-      border: 1px solid rgba(148, 163, 184, 0.35);
-      box-shadow: 0 24px 70px rgba(2, 6, 23, 0.6);
-      display: flex;
-      flex-direction: column;
-    }
-
-    .image-lightbox-stage {
-      flex: 1;
-      min-height: 0;
-      overflow: auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #020617;
-    }
-
-    .image-lightbox img {
-      width: auto;
-      max-width: 100%;
-      max-height: calc(96vh - 110px);
-      display: block;
-      background: #020617;
-      cursor: zoom-in;
-    }
-
-    .image-lightbox.zoomed .image-lightbox-stage {
-      align-items: flex-start;
-      justify-content: flex-start;
-    }
-
-    .image-lightbox.zoomed img {
-      max-width: none;
-      max-height: none;
-      width: auto;
-      cursor: zoom-out;
-    }
-
-    .image-lightbox-caption {
-      margin: 0;
-      padding: 8px 14px;
-      color: #e2e8f0;
-      font-size: 13px;
-      background: rgba(15, 23, 42, 0.9);
-    }
-
-    .image-lightbox-close {
-      position: absolute;
-      top: 8px;
-      right: 8px;
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      border: 1px solid rgba(203, 213, 225, 0.8);
-      background: rgba(15, 23, 42, 0.7);
-      color: #ffffff;
-      font-size: 20px;
-      line-height: 1;
+      background: none;
       cursor: pointer;
+      text-align: left;
     }
 
-    .floating-download {
+    .preview-frame {
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(133, 99, 54, 0.12);
+      background: #f8f7f3;
+      aspect-ratio: 4 / 3;
+      box-shadow: 0 10px 24px rgba(58, 43, 25, 0.08);
+    }
+
+    .preview-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .preview-label {
+      margin-top: 10px;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .preview-desc {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer {
+      margin-top: 24px;
+      padding: 18px 4px 0;
+      color: var(--muted);
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .floating {
       position: fixed;
       right: 18px;
       bottom: 18px;
-      z-index: 1000;
-      background: linear-gradient(135deg, #ea580c, #f97316);
-      color: #ffffff;
+      z-index: 30;
       text-decoration: none;
+      padding: 14px 18px;
       border-radius: 999px;
-      padding: 10px 14px;
-      font-size: 14px;
-      font-weight: 600;
-      box-shadow: 0 10px 28px rgba(194, 65, 12, 0.34);
-      opacity: 0;
-      transform: translateY(10px);
-      transition: opacity 0.2s ease, transform 0.2s ease;
-      pointer-events: none;
+      color: #fff;
+      font-weight: 700;
+      background: linear-gradient(135deg, #155e75 0%, #b45309 100%);
+      box-shadow: 0 16px 38px rgba(21, 94, 117, 0.30);
     }
 
-    .floating-download.show {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: auto;
-    }
-
-    .download-modal-backdrop {
+    .lightbox {
       position: fixed;
       inset: 0;
-      z-index: 1200;
-      background: rgba(15, 23, 42, 0.45);
+      z-index: 50;
       display: none;
       align-items: center;
       justify-content: center;
-      padding: 16px;
+      padding: 24px;
+      background: rgba(15, 23, 42, 0.76);
+      backdrop-filter: blur(6px);
     }
 
-    .download-modal-backdrop.show {
+    .lightbox.show {
       display: flex;
     }
 
-    .download-modal {
-      width: 100%;
-      max-width: 520px;
-      border-radius: 14px;
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      box-shadow: 0 16px 48px rgba(15, 23, 42, 0.22);
-      padding: 16px;
+    .lightbox-card {
+      width: min(1040px, 100%);
+      max-height: calc(100vh - 48px);
+      overflow: auto;
+      border-radius: 24px;
+      background: #fff;
+      padding: 18px;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.30);
       position: relative;
     }
 
-    .download-modal-close-icon {
-      position: absolute;
-      top: 8px;
-      right: 8px;
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      border: 1px solid #cbd5e1;
-      background: #ffffff;
-      color: #334155;
-      font-size: 18px;
-      line-height: 1;
-      cursor: pointer;
+    .lightbox-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 18px;
     }
 
-    .download-modal-close-icon:hover {
-      background: #f8fafc;
-    }
-
-    .download-modal h3 {
-      margin: 0 36px 8px 0;
-      font-size: 20px;
-    }
-
-    .download-modal p {
-      margin: 0 0 8px;
+    .lightbox-caption {
+      margin: 12px 48px 0 4px;
       color: #475569;
-      font-size: 14px;
     }
 
-    @media (max-width: 768px) {
-      .floating-download {
+    .lightbox-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 38px;
+      height: 38px;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      background: rgba(15, 23, 42, 0.08);
+      font-size: 22px;
+    }
+
+    .status {
+      margin-top: 14px;
+      min-height: 24px;
+      font-size: 14px;
+      color: #155e75;
+    }
+
+    @media (max-width: 980px) {
+      .hero,
+      .workflow-highlight,
+      .download-wrap,
+      .module-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .grid.cols-3,
+      .grid.cols-4,
+      .metric-grid,
+      .gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 720px) {
+      .page {
+        width: min(calc(100% - 20px), var(--max));
+        padding-top: 14px;
+      }
+
+      .topbar {
+        position: static;
+        border-radius: 24px;
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .nav {
+        justify-content: flex-start;
+      }
+
+      .hero-main,
+      .hero-side,
+      .section,
+      .download-card,
+      .gallery-card {
+        border-radius: 24px;
+      }
+
+      .hero-main,
+      .hero-side,
+      .section,
+      .download-card,
+      .gallery-card {
+        padding: 20px;
+      }
+
+      .hero-points,
+      .grid.cols-3,
+      .grid.cols-4,
+      .metric-grid,
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-actions,
+      .download-actions {
+        flex-direction: column;
+      }
+
+      .btn,
+      .btn-secondary,
+      .btn-ghost {
+        width: 100%;
+      }
+
+      .floating {
+        left: 12px;
         right: 12px;
         bottom: 12px;
-      }
-
-      .download-actions {
-        width: 100%;
-      }
-
-      .btn-download,
-      .btn-copy,
-      .btn-ghost {
-        flex: 1 1 100%;
-      }
-
-      .btn-modal-ack {
-        flex: 0 1 220px;
-      }
-
-      .image-lightbox {
-        width: 100%;
+        text-align: center;
       }
     }
   </style>
 </head>
 <body>
   <div class="page">
-    <section class="hero">
-      <h1>FishAutoPro 功能说明</h1>
-      <p>本说明基于当前项目代码梳理系统模块、权限边界与多账号隔离机制，适用于产品演示、客户培训与验收。</p>
-      <div class="meta">更新日期：2026-03-02</div>
+    <header class="topbar">
+      <div class="brand">
+        <strong>FishAutoPro</strong>
+        <span>闲鱼自动化交付系统 · 支持可定制编排业务流程</span>
+      </div>
+      <nav class="nav">
+        <a href="#workflow">流程编排</a>
+        <a href="#modules">功能模块</a>
+        <a href="#scenes">适用场景</a>
+        <a href="#deploy">部署方式</a>
+        <a href="#download" class="cta-mini">立即下载</a>
+      </nav>
+    </header>
+
+    <section class="hero" id="top">
+      <div class="hero-main">
+        <div class="eyebrow">核心卖点：不只是自动发货，而是可编排的业务流程引擎</div>
+        <h1>把闲鱼交付，从“发一句话”升级成“按你的业务链路自动执行”</h1>
+        <p class="hero-lead">
+          FishAutoPro 面向需要稳定交付、自动回复、多账号运营和复杂售后协同的闲鱼卖家。它不仅能自动发货，还能按你的业务需求自由编排流程：
+          等待买家回复、提取关键信息、调用外部接口、失败兜底、继续发货、最后标记发货，全链路都可以自定义。
+        </p>
+        <div class="hero-points">
+          <div>支持固定文本发货、库存卡密发货、接口取货发货</div>
+          <div>支持等待回复后再继续交付，适合卡密、账号、代充、资料类业务</div>
+          <div>支持提取手机号、邮箱、账号等关键信息，供后续节点复用</div>
+          <div>支持 API 联动与失败分支，方便接入你自己的业务系统</div>
+        </div>
+        <div class="hero-actions">
+          <a class="btn" href="#download">下载试用版</a>
+          <a class="btn-secondary" href="#workflow">查看流程编排能力</a>
+        </div>
+      </div>
+
+      <aside class="hero-side">
+        <span class="side-badge">适合正在做自动化升级的卖家</span>
+        <h2 class="side-title">这套系统更适合哪些业务</h2>
+        <ul class="side-list">
+          <li>虚拟商品自动交付：卡密、教程、资源、脚本、软件、代充凭证</li>
+          <li>需要买家先补充信息：手机号、邮箱、区服、账号、备注、截图</li>
+          <li>一个订单不是单步发完，而是需要条件判断、等待、接口联动</li>
+          <li>多账号同时运营，希望统一管理订单、消息、回复、日志和通知</li>
+        </ul>
+        <a class="btn-ghost" href="#modules">看完整功能清单</a>
+      </aside>
     </section>
 
-    <section class="card">
-      <h2>目录导航</h2>
-      <ul class="quick-nav">
-        <li><a href="#download">0. 下载通道</a></li>
-        <li><a href="#preview">0. 系统预览</a></li>
-        <li><a href="#overview">1. 系统概览</a></li>
-        <li><a href="#auth">2. 登录注册与免责声明</a></li>
-        <li><a href="#dashboard">3. 仪表盘</a></li>
-        <li><a href="#accounts">4. 账号管理</a></li>
-        <li><a href="#goods">5. 商品管理</a></li>
-        <li><a href="#orders">6. 订单管理</a></li>
-        <li><a href="#conversations">7. 对话消息</a></li>
-        <li><a href="#autoreply">8. 自动回复</a></li>
-        <li><a href="#kb">9. AI知识库</a></li>
-        <li><a href="#autosell">10. 自动发货</a></li>
-        <li><a href="#workflow">11. 发货流程</a></li>
-        <li><a href="#notifications">12. 消息通知</a></li>
-        <li><a href="#settings">13. 系统设置（自动评价、自动免拼）</a></li>
-        <li><a href="#superadmin">14. 超级管理员专属</a></li>
-        <li><a href="#license">15. 许可证管理</a></li>
-        <li><a href="#rebate">16. 返利赚钱</a></li>
-        <li><a href="#mobile">17. 移动端适配</a></li>
-        <li><a href="#isolation">18. 多账号独立与权限隔离</a></li>
-        <li><a href="#availability-alert">19. 账号可用性告警逻辑</a></li>
-      </ul>
+    <section class="section">
+      <div class="section-head">
+        <h2>为什么这个版本比传统自动发货更有价值</h2>
+        <p>传统工具往往只能做到“命中规则后发一句内容”。FishAutoPro 重点解决的是复杂交付链路，让你可以把业务规则真正落到系统里。</p>
+      </div>
+      <div class="metric-grid">
+        <div class="metric">
+          <strong>1 套</strong>
+          <span>统一后台管理账号、商品、订单、会话、流程、通知与授权状态</span>
+        </div>
+        <div class="metric">
+          <strong>8+</strong>
+          <span>流程节点类型可组合使用，覆盖等待、提取、接口联动、发货、延迟、通知等</span>
+        </div>
+        <div class="metric">
+          <strong>多端</strong>
+          <span>支持 Windows、macOS、Linux、Docker 部署，适合本地和服务器场景</span>
+        </div>
+        <div class="metric">
+          <strong>在线</strong>
+          <span>在线许可证校验与运行凭证续签，适合持续发行和统一授权管理</span>
+        </div>
+        <div class="metric">
+          <strong>轻量</strong>
+          <span>非 Docker 版安装包不足 40M，运行内存约 20M，适合低成本长期挂载</span>
+        </div>
+      </div>
     </section>
 
-    <section class="card download-spotlight" id="download">
-      <div class="download-badge">下载入口</div>
-      <h2>FishAutoPro 下载通道</h2>
-      <p class="download-promo">7天试用，包售后！有问题包修！</p>
-      <p>推荐优先使用夸克网盘，百度网盘作为备用通道。可直接点链接下载，也可先复制完整文案到对应 App 打开。</p>
-
-      <div class="download-grid">
-        <article class="download-source">
-          <h3>夸克网盘</h3>
-          <p class="download-code" id="quark-snippet">夸克网盘
-我用夸克网盘给你分享了「fishautopro」，点击链接或复制整段内容，打开「夸克APP」即可获取。
-/~68453LtJUF~:/
-链接：https://pan.quark.cn/s/41f5f9cdb8c7</p>
-          <div class="download-actions">
-            <a class="btn-download" href="https://pan.quark.cn/s/41f5f9cdb8c7" target="_blank" rel="noopener noreferrer">打开夸克链接</a>
-            <button type="button" class="btn-copy" data-copy-target="quark-snippet">复制夸克文案</button>
+    <section class="section" id="workflow">
+      <div class="section-head">
+        <h2>重点能力：支持定制编排业务流程</h2>
+        <p>这是 FishAutoPro 最核心的差异化能力。你不是只能选“自动发货开/关”，而是可以把你的真实业务链路拆成节点，由系统按顺序自动执行。</p>
+      </div>
+      <div class="workflow-highlight">
+        <div class="workflow-stage">
+          <h3>当前可编排的流程节点</h3>
+          <p>已经支持触发、等待回复、发货、提取变量、API 请求、条件判断、延迟、通知、标记发货等节点。适合大多数自动交付业务。</p>
+          <div class="stage-strip">
+            <span class="chip">触发</span>
+            <span class="chip">等待买家回复</span>
+            <span class="chip">提取关键信息</span>
+            <span class="chip">API 请求</span>
+            <span class="chip">条件判断</span>
+            <span class="chip">发货</span>
+            <span class="chip">延迟</span>
+            <span class="chip">通知</span>
+            <span class="chip">标记发货</span>
           </div>
-        </article>
+        </div>
+        <div class="workflow-example">
+          <h3>一个典型流程示例</h3>
+          <div class="flow-list">
+            <div class="flow-item">
+              <span class="flow-no">1</span>
+              <div>买家下单后触发流程，先发送提示语，要求回复手机号或邮箱</div>
+            </div>
+            <div class="flow-item">
+              <span class="flow-no">2</span>
+              <div>系统等待买家回复，收到后自动提取关键信息并保存成变量</div>
+            </div>
+            <div class="flow-item">
+              <span class="flow-no">3</span>
+              <div>把变量传给外部 API 取货或下发业务，再把返回值拼入发货内容</div>
+            </div>
+            <div class="flow-item">
+              <span class="flow-no">4</span>
+              <div>成功则继续发货并标记订单已发货；失败则走兜底分支，提醒人工处理</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="grid cols-3">
+        <div class="card">
+          <h3>不是固定模板，而是可按需编排</h3>
+          <p>你可以针对不同商品做不同交付流程，不再被单一发货模式限制。</p>
+        </div>
+        <div class="card">
+          <h3>支持带条件和失败兜底</h3>
+          <p>流程不是一条死路，提取失败、接口失败、条件不满足，都可以分支处理。</p>
+        </div>
+        <div class="card">
+          <h3>适合扩展你的业务系统</h3>
+          <p>如果你有自己的库存系统、选号系统、代充系统、面板接口，都可以对接进来。</p>
+        </div>
+      </div>
+    </section>
 
-        <article class="download-source">
-          <h3>百度网盘</h3>
-          <p class="download-code" id="baidu-snippet">通过网盘分享的文件：fishautopro
+    <section class="section" id="modules">
+      <div class="section-head">
+        <h2>当前版本重点功能模块</h2>
+        <p>这不是一个单功能工具，而是一套围绕闲鱼账号运营、自动交付、自动回复和授权发行整合起来的系统。</p>
+      </div>
+      <div class="module-grid">
+        <div class="module-item">
+          <strong>多账号管理</strong>
+          <p>集中管理多个闲鱼账号，查看登录状态、账号信息、自动好评设置，并支持一键擦亮和定时擦亮。</p>
+        </div>
+        <div class="module-item">
+          <strong>自动发货规则</strong>
+          <p>支持按商品配置自动发货规则，既能发固定内容，也能挂接发货流程与外部接口。</p>
+        </div>
+        <div class="module-item">
+          <strong>发货流程</strong>
+          <p>可视化流程编排，适合需要等待回复、提取变量、API 联动、条件分支和失败兜底的复杂业务。</p>
+        </div>
+        <div class="module-item">
+          <strong>自动回复 + AI 知识库</strong>
+          <p>支持普通自动回复与知识库增强回复，适合售前问答、重复问题答复和话术沉淀。</p>
+        </div>
+        <div class="module-item">
+          <strong>退款自动回复</strong>
+          <p>针对退款场景单独配置自动回复内容，减少重复沟通，提高售后响应速度。</p>
+        </div>
+        <div class="module-item">
+          <strong>订单 / 会话 / 在线聊天</strong>
+          <p>订单、买家消息、在线会话统一查看，便于追踪发货进度和人工介入处理。</p>
+        </div>
+        <div class="module-item">
+          <strong>系统通知</strong>
+          <p>支持通知渠道与账号绑定，适合登录异常、Token 刷新失败、重要事件提醒。</p>
+        </div>
+        <div class="module-item">
+          <strong>备份恢复与授权管理</strong>
+          <p>支持全量备份、恢复、运行许可证状态查看和在线授权校验，便于正式发行与运维。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="scenes">
+      <div class="section-head">
+        <h2>典型使用场景</h2>
+        <p>如果你的业务不是“下单立刻发送一句固定文本”那么简单，这个系统的价值会更明显。</p>
+      </div>
+      <div class="grid cols-4">
+        <div class="card">
+          <h3>卡密 / 资源发货</h3>
+          <p>买家下单后直接发货，或从库存 / 接口取货后再发送内容。</p>
+        </div>
+        <div class="card">
+          <h3>账号 / 代充业务</h3>
+          <p>先让买家回复账号信息，再自动提取字段并交给你的业务接口处理。</p>
+        </div>
+        <div class="card">
+          <h3>资料 / 教程交付</h3>
+          <p>按商品自动匹配不同交付链路，售前售后话术也可以一体化配置。</p>
+        </div>
+        <div class="card">
+          <h3>多店铺协同运营</h3>
+          <p>多个账号统一管理，结合日志、通知和授权体系，更适合长期经营。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="deploy">
+      <div class="section-head">
+        <h2>部署和发行更成熟</h2>
+        <p>当前版本已经不只是“本地跑一下”的工具，还考虑了正式分发、容器部署、在线授权和后续运维。</p>
+      </div>
+      <div class="grid cols-3">
+        <div class="card">
+          <h3>部署成本更低</h3>
+          <p>非 Docker 版安装包不足 40M，常规运行内存约 20M，资源占用很轻，适合长期稳定运行。</p>
+        </div>
+        <div class="card">
+          <h3>多平台支持</h3>
+          <p>支持 Windows 包、macOS、Linux 二进制，以及 Docker 多架构镜像，适合个人电脑和服务器。</p>
+        </div>
+        <div class="card">
+          <h3>可部署在路由器等轻量设备</h3>
+          <p>除了电脑和云服务器，也适合部署在家里的路由器等轻量环境，能明显降低长期部署成本。也不用担心触发IP风控</p>
+        </div>
+        <div class="card">
+          <h3>在线授权校验</h3>
+          <p>支持服务端授权校验与短期运行凭证续签，发行和控制授权状态更方便。</p>
+        </div>
+        <div class="card">
+          <h3>备份与迁移</h3>
+          <p>支持完整备份恢复，适合版本迁移、服务器更换和正式环境维护。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="download">
+      <div class="section-head">
+        <h2>下载试用与界面预览</h2>
+        <p>推荐优先使用夸克网盘下载，百度网盘作为备用通道。可以直接打开链接，也可以复制整段文案到对应 App 使用。</p>
+      </div>
+      <div class="download-wrap">
+        <div class="download-card">
+          <h3>下载通道</h3>
+          <p class="download-note">当前提供 7 天试用版。如需正式版、业务流程定制或对接接口，可按实际业务继续扩展。</p>
+
+          <article class="download-source">
+            <h4>夸克网盘</h4>
+            <p class="download-text" id="quark-snippet">夸克网盘
+我用夸克网盘给你分享了「fishautopro」，点击链接或复制整段内容，打开「夸克APP」即可获取。
+
+链接：https://pan.quark.cn/s/41f5f9cdb8c7</p>
+            <div class="download-actions">
+              <a class="btn-ghost" href="https://pan.quark.cn/s/41f5f9cdb8c7" target="_blank" rel="noopener noreferrer">打开夸克链接</a>
+              <button class="btn-ghost copy-btn" type="button" data-copy-target="quark-snippet">复制夸克文案</button>
+            </div>
+          </article>
+
+          <article class="download-source">
+            <h4>百度网盘</h4>
+            <p class="download-text" id="baidu-snippet">通过网盘分享的文件：fishautopro
 链接: https://pan.baidu.com/s/1hhsUic8ZyHtVoqFqZhui-g
 提取码: h4dv</p>
-          <div class="download-actions">
-            <a class="btn-download" href="https://pan.baidu.com/s/1hhsUic8ZyHtVoqFqZhui-g" target="_blank" rel="noopener noreferrer">打开百度链接</a>
-            <button type="button" class="btn-copy" data-copy-target="baidu-snippet">复制百度文案</button>
-            <button type="button" class="btn-copy" data-copy-text="h4dv">复制提取码</button>
+            <div class="download-actions">
+              <a class="btn-ghost" href="https://pan.baidu.com/s/1hhsUic8ZyHtVoqFqZhui-g" target="_blank" rel="noopener noreferrer">打开百度链接</a>
+              <button class="btn-ghost copy-btn" type="button" data-copy-target="baidu-snippet">复制百度文案</button>
+              <button class="btn-ghost copy-btn" type="button" data-copy-text="h4dv">复制提取码</button>
+            </div>
+          </article>
+
+          <div class="status" id="copy-status" aria-live="polite"></div>
+        </div>
+
+        <div class="gallery-card">
+          <h3>界面预览</h3>
+          <p class="download-note">点击图片可放大查看。当前版本的实际功能已经比早期展示页更完整，尤其是流程编排、账号管理和授权体系。</p>
+          <div class="gallery-grid">
+            <button class="preview" type="button" data-full="https://kayden.website/web3/images/home.jpg" data-caption="系统首页预览">
+              <div class="preview-frame">
+                <img src="https://kayden.website/web3/images/home.jpg" alt="系统首页预览" loading="lazy" />
+              </div>
+              <div class="preview-label">系统首页</div>
+              <div class="preview-desc">后台总览与核心入口</div>
+            </button>
+
+            <button class="preview" type="button" data-full="https://kayden.website/web3/images/wechat.png" data-caption="微信交流二维码">
+              <div class="preview-frame">
+                <img src="https://kayden.website/web3/images/wechat.png" alt="微信交流二维码" loading="lazy" />
+              </div>
+              <div class="preview-label">微信交流</div>
+              <div class="preview-desc">可放大查看二维码</div>
+            </button>
+
+            <button class="preview" type="button" data-full="https://kayden.website/web3/images/qrcode.jpg" data-caption="QQ群交流二维码">
+              <div class="preview-frame">
+                <img src="https://kayden.website/web3/images/qrcode.jpg" alt="QQ群交流二维码" loading="lazy" />
+              </div>
+              <div class="preview-label">QQ群交流</div>
+              <div class="preview-desc">可放大查看二维码</div>
+            </button>
           </div>
-        </article>
-      </div>
-
-      <div class="download-status" id="download-status" aria-live="polite"></div>
-    </section>
-
-    <section class="card preview-showcase" id="preview">
-      <h2>系统预览</h2>
-      <p class="muted">点击图片可放大查看。第二张为微信交流二维码，第三张为QQ群交流二维码。</p>
-      <div class="preview-grid">
-        <figure class="preview-item">
-          <button type="button" class="preview-button" data-full="https://kayden.website/web3/images/home.jpg" data-caption="预览图 1：系统首页">
-            <img loading="lazy" src="https://kayden.website/web3/images/home.jpg" alt="预览图 1：系统首页" />
-          </button>
-          <figcaption>预览图 1：系统首页</figcaption>
-        </figure>
-
-        <figure class="preview-item">
-          <button type="button" class="preview-button qr" data-full="https://kayden.website/web3/images/wechat.png" data-caption="预览图 2：微信交流二维码">
-            <img loading="lazy" src="https://kayden.website/web3/images/wechat.png" alt="预览图 2：微信交流二维码" />
-          </button>
-          <figcaption>预览图 2：微信交流二维码</figcaption>
-        </figure>
-
-        <figure class="preview-item">
-          <button type="button" class="preview-button qr" data-full="https://kayden.website/web3/images/qrcode.jpg" data-caption="预览图 3：QQ群交流二维码">
-            <img loading="lazy" src="https://kayden.website/web3/images/qrcode.jpg" alt="预览图 3：QQ群交流二维码" />
-          </button>
-          <figcaption>预览图 3：QQ群交流二维码</figcaption>
-        </figure>
+        </div>
       </div>
     </section>
 
-    <section class="card" id="overview">
-      <h2>1. 系统概览</h2>
-      <p>FishAutoPro 是一个面向闲鱼多账号运营的自动化管理平台，覆盖账号接入、商品/订单/会话管理、自动回复、自动发货、AI知识库、通知、许可证、运维管理等完整链路。</p>
-      <p><strong>平台支持：</strong>支持 Windows、macOS、Linux 和 Docker 平台部署。</p>
-      <p>
-        <span class="pill">角色：超级管理员</span>
-        <span class="pill">角色：普通用户</span>
-        <span class="pill warn">强权限模块已做超级管理员限制</span>
-      </p>
-      <table>
-        <thead>
-          <tr>
-            <th>模块类别</th>
-            <th>主要页面</th>
-            <th>说明</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>业务运营</td>
-            <td>仪表盘、账号、商品、订单、对话</td>
-            <td>日常运营核心页面，支持按账号筛选、实时状态同步。</td>
-          </tr>
-          <tr>
-            <td>自动化</td>
-            <td>自动回复、AI知识库、自动发货、发货流程</td>
-            <td>支持规则化与 AI 化自动处理能力。</td>
-          </tr>
-          <tr>
-            <td>系统管理</td>
-            <td>通知、设置、许可证、免责声明、返利</td>
-            <td>配置平台行为与商业化能力。</td>
-          </tr>
-          <tr>
-            <td>运维与安全</td>
-            <td>用户管理、邮件服务配置、系统日志、数据备份</td>
-            <td>仅超级管理员可见与可操作。</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-
-    <section class="card" id="auth">
-      <h2>2. 登录注册与免责声明</h2>
-      <h3>2.1 登录方式</h3>
-      <ul>
-        <li>账号 + 密码 + 图形验证码。</li>
-        <li>邮箱 + 密码 + 图形验证码。</li>
-        <li>邮箱 + 邮箱验证码（免图形验证码）。</li>
-      </ul>
-
-      <h3>2.2 注册流程</h3>
-      <ul>
-        <li>注册时需填写账号、邮箱、密码、图形验证码、邮箱验证码。</li>
-        <li>邮箱验证码发送前会校验邮箱格式、注册用途与图形验证码。</li>
-      </ul>
-
-      <h3>2.3 免责声明机制</h3>
-      <ul>
-        <li>用户首次登录后，如未同意免责声明，将强制跳转免责声明确认页。</li>
-        <li>用户勾选并提交后才可进入系统首页。</li>
-        <li>系统同时提供“免责声明”独立菜单页用于长期查看。</li>
-      </ul>
-
-      <h3>2.4 超级管理员来源</h3>
-      <ul>
-        <li>超级管理员账号由 <code>config.json</code> 的 <code>auth.superAdmin.username/password</code> 同步生成。</li>
-        <li>业务页面不提供创建或修改超级管理员入口。</li>
-      </ul>
-    </section>
-
-    <section class="card" id="dashboard">
-      <h2>3. 仪表盘</h2>
-      <ul>
-        <li>展示账号在线数、消息会话数。</li>
-        <li>订单与金额统计：全部/近7天切换，且支持全部账号或指定账号统计。</li>
-        <li>提供月度、今日维度的订单金额统计（已成交、未成交、已支付等）。</li>
-        <li>提供“待发货数量”指标。</li>
-      </ul>
-    </section>
-
-    <section class="card" id="accounts">
-      <h2>4. 账号管理</h2>
-      <ul>
-        <li>支持 Cookie 新增/编辑账号，支持启停、重启、刷新资料。</li>
-        <li>支持账号备注、自动好评开关与账号级自动好评文案配置。</li>
-        <li>删除账号时提供危险确认弹窗，并明确提示将删除的关联数据范围。</li>
-        <li>后端删除逻辑会清理订单、会话消息、规则、日志、通知绑定等账号关联数据。</li>
-      </ul>
-    </section>
-
-    <section class="card" id="goods">
-      <h2>5. 商品管理</h2>
-      <ul>
-        <li>支持按账号、状态筛选商品。</li>
-        <li>支持分页加载与刷新。</li>
-        <li>商品数据可用于自动回复、自动发货规则中的“按商品生效”配置。</li>
-      </ul>
-    </section>
-
-    <section class="card" id="orders">
-      <h2>6. 订单管理</h2>
-      <ul>
-        <li>支持按账号、状态筛选订单。</li>
-        <li>支持手动按账号 + 订单号拉取订单详情。</li>
-        <li>支持单笔刷新状态、发货、免发货、删除。</li>
-        <li>支持多选与批量删除订单。</li>
-      </ul>
-    </section>
-
-    <section class="card" id="conversations">
-      <h2>7. 对话消息</h2>
-      <ul>
-        <li>会话列表支持按账号、商品筛选，支持批量删除会话。</li>
-        <li>消息明细支持加载更早消息、消息多选删除。</li>
-        <li>支持发送文字与图片；图片支持本地上传。</li>
-        <li>支持直接粘贴剪贴板图片到输入框区域，先预览再发送。</li>
-        <li>发送图片会携带真实宽高，避免客户端按默认比例变形。</li>
-        <li>会话列表支持展示首次商品快照（标题/图片），降低商品被删后的识别成本。</li>
-      </ul>
-    </section>
-
-    <section class="card" id="autoreply">
-      <h2>8. 自动回复</h2>
-      <ul>
-        <li>规则支持按账号生效（全局或指定账号）。</li>
-        <li>支持按商品作用域与“排除商品”配置。</li>
-        <li>匹配方式：精确匹配、包含关键词、正则匹配、AI 回复。</li>
-        <li>支持“排除匹配”兜底规则。</li>
-        <li>回复类型支持文本和图片；图片回复支持上传并保存宽高。</li>
-        <li>图片回复支持“前置文字”，即先发文字再发图片。</li>
-        <li>AI 回复可绑定AI知识库，未填提示词可回退全局提示词。</li>
-      </ul>
-    </section>
-
-    <section class="card" id="kb">
-      <h2>9. AI知识库</h2>
-      <ul>
-        <li>支持新建知识库并上传文本类文件（如 txt/md/json/csv/srt/vtt）。</li>
-        <li>支持向已有知识库追加文档、删除文档、删除知识库。</li>
-        <li>支持知识块检索测试，用于验证召回效果。</li>
-      </ul>
-    </section>
-
-    <section class="card" id="autosell">
-      <h2>10. 自动发货</h2>
-      <ul>
-        <li>规则支持按账号、商品、商品规格匹配。</li>
-        <li>发货类型支持固定文本、库存发货、API 取货。</li>
-        <li>触发时机支持付款后/确认后。</li>
-        <li>可绑定“发货流程”作为执行链路。</li>
-        <li>库存发货支持库存导入、查看、清理与已用库存管理。</li>
-      </ul>
-    </section>
-
-    <section class="card" id="workflow">
-      <h2>11. 发货流程</h2>
-      <ul>
-        <li>可视化流程编辑（思维导图方式），支持新增子节点、兄弟节点、条件分支。</li>
-        <li>支持节点参数配置（延迟、条件、消息等）。</li>
-        <li>支持保存/设为默认流程。</li>
-        <li>支持流程导入/导出 JSON，导出 PNG。</li>
-      </ul>
-    </section>
-
-    <section class="card" id="notifications">
-      <h2>12. 消息通知</h2>
-      <ul>
-        <li>通知渠道管理：企业微信、钉钉、飞书/Lark、Bark、Email SMTP、Webhook、Telegram。</li>
-        <li>渠道支持启停、编辑、删除、发送测试通知。</li>
-        <li>支持“账号-通知渠道”绑定，可按账号独立管理消息通知策略。</li>
-      </ul>
-    </section>
-
-    <section class="card" id="settings">
-      <h2>13. 系统设置</h2>
-      <ul>
-        <li>主题切换。</li>
-        <li>免拼单自动免拼发货开关与延迟配置（卡片消息触发后自动调用免拼发货接口）。</li>
-        <li>自动好评全局文案与接口配置（账号级文案为空时回退全局）。</li>
-        <li>AI 服务配置（地址、模型、密钥、系统提示词）与连接测试。</li>
-      </ul>
-    </section>
-
-    <section class="card" id="superadmin">
-      <h2>14. 超级管理员专属模块</h2>
-      <p class="muted">以下模块前后端均限制超级管理员访问。</p>
-      <ul>
-        <li><strong>用户管理：</strong>查看用户列表，删除普通用户（不可删除超级管理员）。</li>
-        <li><strong>邮件服务配置：</strong>配置 SMTP，测试连通性，清空 SMTP 密码。</li>
-        <li><strong>系统日志：</strong>查看实时日志/历史日志，支持日期、文件、级别筛选。</li>
-        <li><strong>数据备份：</strong>数据库导出、导入恢复、手动重启服务。</li>
-      </ul>
-    </section>
-
-    <section class="card" id="license">
-      <h2>15. 许可证管理</h2>
-      <ul>
-        <li>展示授权状态、到期信息、机器码。</li>
-        <li>支持导入 JSON 许可证。</li>
-        <li>提供机器码复制能力，便于线下发证。</li>
-      </ul>
-    </section>
-
-    <section class="card" id="rebate">
-      <h2>16. 返利赚钱</h2>
-      <h3>16.1 授权价格</h3>
-      <ul>
-        <li>7天试用</li>
-        <li>1个月 ¥7</li>
-        <li>半年 ¥35</li>
-        <li>一年 ¥50</li>
-        <li>永久 ¥100</li>
-      </ul>
-
-      <h3>16.2 返利提成规则</h3>
-      <p>推广一个人购买一单，就可以得到成交订单金额的 30% 提成。</p>
-      <p>例如：推广一个人买了 100 元永久授权，可得到 30 元提成。</p>
-      <ul>
-        <li>展示邀请码与返利说明文案。</li>
-        <li>支持展示返利联系二维码，便于业务转化。</li>
-      </ul>
-    </section>
-
-    <section class="card" id="mobile">
-      <h2>17. 移动端适配</h2>
-      <ul>
-        <li>提供移动端独立布局（抽屉菜单）。</li>
-        <li>移动端右上角展示当前用户头像、用户名、角色，并支持退出登录。</li>
-        <li>核心菜单与权限显示规则与 PC 端保持一致。</li>
-      </ul>
-    </section>
-
-    <section class="card" id="isolation">
-      <h2>18. 多账号独立与权限隔离</h2>
-      <h3>18.1 账号数据归属</h3>
-      <ul>
-        <li>账号、自动回复、自动发货、知识库、通知渠道、发货流程等核心数据带 <code>owner_user_id</code> 归属。</li>
-        <li>普通用户仅可访问自己归属的账号与相关资源；超级管理员可全局访问。</li>
-      </ul>
-
-      <h3>18.2 按账号可见范围联动</h3>
-      <ul>
-        <li>订单、会话、消息等通过“可访问账号列表”进行访问控制，确保用户仅看到自己账号的业务数据。</li>
-        <li>WebSocket 推送同样按可访问账号范围过滤。</li>
-      </ul>
-
-      <h3>18.3 高权限接口隔离</h3>
-      <ul>
-        <li>数据备份、用户管理、系统日志、邮件服务配置接口均有超级管理员鉴权。</li>
-        <li>前端路由与菜单也同步做了超级管理员可见性控制，避免误触达。</li>
-      </ul>
-    </section>
-
-    <section class="card" id="availability-alert">
-      <h2>19. 账号可用性告警逻辑</h2>
-      <p>系统内置账号可用性监控，采用“两条告警线”覆盖不同故障阶段，并可通过通知渠道推送。</p>
-
-      <h3>19.1 重连失败告警（reconnect_stuck）</h3>
-      <ul>
-        <li>触发场景：账号重连过程中持续失败，始终无法恢复在线。</li>
-        <li>触发阈值：连续失败达到 3 次触发告警。</li>
-        <li>冷却机制：同一账号 3 小时内最多重复告警 1 次。</li>
-        <li>恢复机制：账号重新成功上线后，失败计数自动清零。</li>
-      </ul>
-
-      <h3>19.2 Token 刷新失败告警（token_refresh）</h3>
-      <ul>
-        <li>触发场景：运行中 Token 刷新持续失败（主要针对 cookie 失效、风控类错误）。</li>
-        <li>触发阈值：10 分钟窗口内失败次数达到 3 次，或连续失败达到 3 次。</li>
-        <li>冷却机制：同一账号 3 小时内最多重复告警 1 次。</li>
-        <li>保护动作：达到告警阈值后，系统会自动停用该账号并断开连接，避免持续异常重试。</li>
-      </ul>
-    </section>
-
-    <div class="foot" style="display: none;">
-      注：本说明为“当前代码实现”视角，后续若新增功能或调整页面结构，建议同步更新本文件以保持交付一致性。
-    </div>
+    <footer class="footer">
+      <div>FishAutoPro · 闲鱼自动化交付系统</div>
+      <div>重点能力：可定制编排业务流程、自动发货、自动回复、知识库、通知、授权与多端部署</div>
+      <div id="copyright"></div>
+    </footer>
   </div>
 
-  <a href="#download" class="floating-download" id="floating-download-btn">下载 FishAutoPro</a>
+  <a class="floating" href="#download">下载 FishAutoPro</a>
 
-  <div class="download-modal-backdrop" id="download-modal" aria-hidden="true">
-    <div class="download-modal" role="dialog" aria-modal="true" aria-labelledby="download-modal-title">
-      <button type="button" class="download-modal-close-icon" id="download-modal-close-icon" aria-label="关闭弹窗">×</button>
-      <h3 id="download-modal-title">FishAutoPro 下载入口</h3>
-      <p>你可以直接使用夸克网盘或百度网盘下载。</p>
-      <div class="download-actions">
-        <a class="btn-download" href="https://pan.quark.cn/s/41f5f9cdb8c7" target="_blank" rel="noopener noreferrer">打开夸克链接</a>
-        <a class="btn-download" href="https://pan.baidu.com/s/1hhsUic8ZyHtVoqFqZhui-g" target="_blank" rel="noopener noreferrer">打开百度链接</a>
-        <button type="button" class="btn-copy" data-copy-target="quark-snippet">复制夸克文案</button>
-        <button type="button" class="btn-copy" data-copy-text="h4dv">复制百度提取码</button>
-        <button type="button" class="btn-ghost btn-modal-ack" id="download-modal-close">我知道了</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="image-lightbox-backdrop" id="image-lightbox" aria-hidden="true">
-    <div class="image-lightbox" role="dialog" aria-modal="true" aria-labelledby="image-lightbox-caption">
-      <button type="button" class="image-lightbox-close" id="image-lightbox-close" aria-label="关闭大图">×</button>
-      <div class="image-lightbox-stage" id="image-lightbox-stage">
-        <img id="image-lightbox-img" src="" alt="" />
-      </div>
-      <p class="image-lightbox-caption" id="image-lightbox-caption"></p>
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <div class="lightbox-card">
+      <button class="lightbox-close" id="lightbox-close" type="button" aria-label="关闭">×</button>
+      <img id="lightbox-image" src="" alt="" />
+      <p class="lightbox-caption" id="lightbox-caption"></p>
     </div>
   </div>
 
   <script>
     (function () {
-      var statusEl = document.getElementById("download-status");
-      var modal = document.getElementById("download-modal");
-      var closeBtn = document.getElementById("download-modal-close");
-      var closeIconBtn = document.getElementById("download-modal-close-icon");
-      var floatingBtn = document.getElementById("floating-download-btn");
-      var imageLightbox = document.getElementById("image-lightbox");
-      var imageLightboxPanel = imageLightbox ? imageLightbox.querySelector(".image-lightbox") : null;
-      var imageLightboxImg = document.getElementById("image-lightbox-img");
-      var imageLightboxCaption = document.getElementById("image-lightbox-caption");
-      var imageLightboxClose = document.getElementById("image-lightbox-close");
+      var statusEl = document.getElementById("copy-status");
+      var copyrightEl = document.getElementById("copyright");
+      var lightbox = document.getElementById("lightbox");
+      var lightboxImage = document.getElementById("lightbox-image");
+      var lightboxCaption = document.getElementById("lightbox-caption");
+      var lightboxClose = document.getElementById("lightbox-close");
 
-      function setStatus(message) {
-        if (!statusEl) return;
-        statusEl.textContent = message;
-      }
-
-      function readCopyText(trigger) {
-        var direct = trigger.getAttribute("data-copy-text");
-        if (direct) return direct;
-
-        var targetId = trigger.getAttribute("data-copy-target");
-        if (!targetId) return "";
-
-        var targetEl = document.getElementById(targetId);
-        return targetEl ? targetEl.textContent.trim() : "";
-      }
-
-      function fallbackCopy(text) {
-        var input = document.createElement("textarea");
-        input.value = text;
-        input.setAttribute("readonly", "readonly");
-        input.style.position = "fixed";
-        input.style.opacity = "0";
-        document.body.appendChild(input);
-        input.select();
-        var ok = document.execCommand("copy");
-        document.body.removeChild(input);
-        return ok;
+      function setStatus(text) {
+        if (statusEl) {
+          statusEl.textContent = text;
+        }
       }
 
       function copyText(text) {
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          return navigator.clipboard.writeText(text);
+        if (!text) {
+          setStatus("没有可复制的内容");
+          return;
         }
-        return new Promise(function (resolve, reject) {
-          if (fallbackCopy(text)) resolve();
-          else reject(new Error("copy_failed"));
+        navigator.clipboard.writeText(text).then(function () {
+          setStatus("已复制到剪贴板");
+        }).catch(function () {
+          setStatus("复制失败，请手动复制");
         });
       }
 
-      document.querySelectorAll("[data-copy-target], [data-copy-text]").forEach(function (trigger) {
-        trigger.addEventListener("click", function () {
-          var text = readCopyText(trigger);
-          if (!text) {
-            setStatus("复制失败：未找到可复制内容。");
+      document.querySelectorAll(".copy-btn").forEach(function (button) {
+        button.addEventListener("click", function () {
+          var copyTextValue = button.getAttribute("data-copy-text");
+          var targetId = button.getAttribute("data-copy-target");
+          if (copyTextValue) {
+            copyText(copyTextValue);
             return;
           }
-
-          copyText(text)
-            .then(function () {
-              setStatus("复制成功，请到对应网盘 App 粘贴打开。");
-            })
-            .catch(function () {
-              setStatus("复制失败，请手动复制。");
-            });
-        });
-      });
-
-      function hideModal() {
-        if (!modal) return;
-        modal.classList.remove("show");
-        modal.setAttribute("aria-hidden", "true");
-      }
-
-      function setImageLightboxZoom(zoomed) {
-        if (!imageLightboxPanel) return;
-        imageLightboxPanel.classList.toggle("zoomed", !!zoomed);
-      }
-
-      function openImageLightbox(src, alt, caption) {
-        if (!imageLightbox || !imageLightboxImg) return;
-        setImageLightboxZoom(false);
-        imageLightboxImg.src = src;
-        imageLightboxImg.alt = alt || caption || "系统预览大图";
-        if (imageLightboxCaption) {
-          var text = caption || "";
-          imageLightboxCaption.textContent = text ? text + "（点击图片放大/还原）" : "点击图片放大/还原";
-        }
-        imageLightbox.classList.add("show");
-        imageLightbox.setAttribute("aria-hidden", "false");
-      }
-
-      function closeImageLightbox() {
-        if (!imageLightbox || !imageLightboxImg) return;
-        setImageLightboxZoom(false);
-        imageLightbox.classList.remove("show");
-        imageLightbox.setAttribute("aria-hidden", "true");
-        imageLightboxImg.src = "";
-      }
-
-      if (modal) {
-        window.setTimeout(function () {
-          modal.classList.add("show");
-          modal.setAttribute("aria-hidden", "false");
-        }, 1200);
-      }
-
-      if (closeBtn) {
-        closeBtn.addEventListener("click", hideModal);
-      }
-
-      if (closeIconBtn) {
-        closeIconBtn.addEventListener("click", hideModal);
-      }
-
-      if (modal) {
-        modal.addEventListener("click", function (event) {
-          if (event.target === modal) {
-            hideModal();
+          if (!targetId) {
+            setStatus("没有可复制的内容");
+            return;
           }
-        });
-      }
-
-      document.querySelectorAll(".preview-button").forEach(function (button) {
-        button.addEventListener("click", function () {
-          var img = button.querySelector("img");
-          var src = button.getAttribute("data-full") || (img ? img.getAttribute("src") : "");
-          var alt = img ? img.getAttribute("alt") : "";
-          var caption = button.getAttribute("data-caption") || alt || "";
-          if (src) openImageLightbox(src, alt, caption);
+          var target = document.getElementById(targetId);
+          copyText(target ? target.textContent : "");
         });
       });
 
-      if (imageLightboxClose) {
-        imageLightboxClose.addEventListener("click", closeImageLightbox);
-      }
-
-      if (imageLightboxImg) {
-        imageLightboxImg.addEventListener("click", function (event) {
-          event.stopPropagation();
-          if (!imageLightboxPanel) return;
-          setImageLightboxZoom(!imageLightboxPanel.classList.contains("zoomed"));
+      document.querySelectorAll(".preview").forEach(function (button) {
+        button.addEventListener("click", function () {
+          var full = button.getAttribute("data-full");
+          var caption = button.getAttribute("data-caption") || "";
+          if (!full || !lightbox || !lightboxImage || !lightboxCaption) {
+            return;
+          }
+          lightboxImage.src = full;
+          lightboxImage.alt = caption;
+          lightboxCaption.textContent = caption;
+          lightbox.classList.add("show");
+          lightbox.setAttribute("aria-hidden", "false");
+          document.body.style.overflow = "hidden";
         });
+      });
+
+      function closeLightbox() {
+        if (!lightbox || !lightboxImage) {
+          return;
+        }
+        lightbox.classList.remove("show");
+        lightbox.setAttribute("aria-hidden", "true");
+        lightboxImage.src = "";
+        document.body.style.overflow = "";
       }
 
-      if (imageLightbox) {
-        imageLightbox.addEventListener("click", function (event) {
-          if (event.target === imageLightbox) {
-            closeImageLightbox();
+      if (lightboxClose) {
+        lightboxClose.addEventListener("click", closeLightbox);
+      }
+
+      if (lightbox) {
+        lightbox.addEventListener("click", function (event) {
+          if (event.target === lightbox) {
+            closeLightbox();
           }
         });
       }
 
       document.addEventListener("keydown", function (event) {
         if (event.key === "Escape") {
-          hideModal();
-          closeImageLightbox();
+          closeLightbox();
         }
       });
 
-      function toggleFloatingButton() {
-        if (!floatingBtn) return;
-        if (window.scrollY > 260) {
-          floatingBtn.classList.add("show");
-        } else {
-          floatingBtn.classList.remove("show");
-        }
+      if (copyrightEl) {
+        copyrightEl.textContent = "© " + new Date().getFullYear() + " FishAutoPro";
       }
-
-      toggleFloatingButton();
-      window.addEventListener("scroll", toggleFloatingButton, { passive: true });
     })();
   </script>
 </body>
