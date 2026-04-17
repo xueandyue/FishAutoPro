@@ -182,6 +182,25 @@
       max-width: 42em;
     }
 
+    .hero-summary {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .hero-summary span {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      color: rgba(255, 255, 255, 0.94);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
     .hero-points {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -195,6 +214,26 @@
       background: rgba(255, 255, 255, 0.10);
       border: 1px solid rgba(255, 255, 255, 0.12);
       font-size: 14px;
+    }
+
+    .price-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 18px 0 0;
+    }
+
+    .price-chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 9px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      backdrop-filter: blur(8px);
     }
 
     .hero-actions {
@@ -268,6 +307,12 @@
       margin: 0;
       font-size: 24px;
       line-height: 1.25;
+    }
+
+    .side-desc {
+      margin: 0;
+      color: #5b6472;
+      font-size: 14px;
     }
 
     .side-list {
@@ -720,11 +765,12 @@
     <header class="topbar">
       <div class="brand">
         <strong>FishAutoPro</strong>
-        <span>闲鱼自动化交付系统 · 支持可定制编排业务流程</span>
+        <span>闲鱼自动化交付系统</span>
       </div>
       <nav class="nav">
         <a href="#workflow">流程编排</a>
         <a href="#modules">功能模块</a>
+        <a href="#coverage">能力全景</a>
         <a href="#scenes">适用场景</a>
         <a href="#deploy">部署方式</a>
         <a href="#download" class="cta-mini">立即下载</a>
@@ -733,17 +779,30 @@
 
     <section class="hero" id="top">
       <div class="hero-main">
-        <div class="eyebrow">核心卖点：不只是自动发货，而是可编排的业务流程引擎</div>
-        <h1>把闲鱼交付，从“发一句话”升级成“按你的业务链路自动执行”</h1>
+        <div class="eyebrow">闲鱼多账号运营自动化平台</div>
+        <h1>FishAutoPro 不只是自动发货，还能把整套业务流程自动跑起来</h1>
         <p class="hero-lead">
-          FishAutoPro 面向需要稳定交付、自动回复、多账号运营和复杂售后协同的闲鱼卖家。它不仅能自动发货，还能按你的业务需求自由编排流程：
-          等待买家回复、提取关键信息、调用外部接口、失败兜底、继续发货、最后标记发货，全链路都可以自定义。
+          FishAutoPro 是一个面向闲鱼多账号运营的自动化管理平台，安装包不超过 40M，运行只占用 10 多 M 内存，能部署在路由器。
+          它既支持自动回复、自动发货、自动评价、自动免拼、自动擦亮，也支持可定制编排业务流程，适合长期稳定运营。
         </p>
+        <div class="hero-summary">
+          <span>不超过 40M</span>
+          <span>10 多 M 内存</span>
+          <span>可部署在路由器</span>
+          <span>支持多平台部署</span>
+        </div>
+        <div class="price-strip" aria-label="授权价格">
+          <span class="price-chip">7 天试用</span>
+          <span class="price-chip">1 个月 ¥7</span>
+          <span class="price-chip">半年 ¥35</span>
+          <span class="price-chip">1 年 ¥50</span>
+          <span class="price-chip">永久 ¥100</span>
+        </div>
         <div class="hero-points">
-          <div>支持固定文本发货、库存卡密发货、接口取货发货</div>
-          <div>支持等待回复后再继续交付，适合卡密、账号、代充、资料类业务</div>
-          <div>支持提取手机号、邮箱、账号等关键信息，供后续节点复用</div>
-          <div>支持 API 联动与失败分支，方便接入你自己的业务系统</div>
+          <div>自动回复、图文回复、AI 知识库，售前售后都能自动处理</div>
+          <div>自动发货支持多规格、免拼单自动发货、自动评价、自动擦亮</div>
+          <div>支持等待回复、提取变量、API 联动、失败兜底的流程编排</div>
+          <div>支持 Windows、macOS、Linux、OpenWrt、Docker 部署</div>
         </div>
         <div class="hero-actions">
           <a class="btn" href="#download">下载试用版</a>
@@ -752,13 +811,15 @@
       </div>
 
       <aside class="hero-side">
-        <span class="side-badge">适合正在做自动化升级的卖家</span>
-        <h2 class="side-title">这套系统更适合哪些业务</h2>
+        <span class="side-badge">核心卖点速览</span>
+        <h2 class="side-title">功能、部署、推广、售后都已经考虑进来了</h2>
+        <p class="side-desc">如果客户先看首屏，这里就能把大部分成交信息讲清楚。</p>
         <ul class="side-list">
-          <li>虚拟商品自动交付：卡密、教程、资源、脚本、软件、代充凭证</li>
-          <li>需要买家先补充信息：手机号、邮箱、区服、账号、备注、截图</li>
-          <li>一个订单不是单步发完，而是需要条件判断、等待、接口联动</li>
-          <li>多账号同时运营，希望统一管理订单、消息、回复、日志和通知</li>
+          <li>自动回复、自动发货、自动评价、自动免拼、自动擦亮，一套系统统一处理</li>
+          <li>支持图文回复聊天信息，也可接入 AI 大模型与 AI 知识库</li>
+          <li>支持移动端适配、多账号独立与权限隔离、账号可用性监控</li>
+          <li>支持推广返利提成，适合做试用转正、按月 / 年 / 永久授权销售</li>
+          <li>有售后，提供使用指导、问题修复和系统优化，不是卖完就结束</li>
         </ul>
         <a class="btn-ghost" href="#modules">看完整功能清单</a>
       </aside>
@@ -864,7 +925,7 @@
         </div>
         <div class="module-item">
           <strong>自动发货规则</strong>
-          <p>支持按商品配置自动发货规则，既能发固定内容，也能挂接发货流程与外部接口。</p>
+          <p>支持按商品配置自动发货规则，既能发固定内容，也能挂接发货流程与外部接口，并支持免拼单自动发货场景。</p>
         </div>
         <div class="module-item">
           <strong>发货流程</strong>
@@ -889,6 +950,95 @@
         <div class="module-item">
           <strong>备份恢复与授权管理</strong>
           <p>支持全量备份、恢复、运行许可证状态查看和在线授权校验，便于正式发行与运维。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="coverage">
+      <div class="section-head">
+        <h2>完整能力全景</h2>
+        <p>如果你是拿这页给客户做功能对比，这一部分更适合直接往下看。除了“发货流程”这个核心卖点外，FishAutoPro 现在已经覆盖了账号、商品、订单、消息、运营、授权和运维的整套能力。</p>
+      </div>
+      <div class="grid cols-4">
+        <div class="card">
+          <h3>账号管理</h3>
+          <p>支持多账号集中管理，查看账号状态、登录信息、启停配置与账号级功能开关。</p>
+        </div>
+        <div class="card">
+          <h3>商品管理</h3>
+          <p>支持商品维度配置自动发货规则，适合一个店铺多商品、多交付逻辑并行管理。</p>
+        </div>
+        <div class="card">
+          <h3>订单管理</h3>
+          <p>订单统一查看与跟踪，方便定位自动发货执行情况、异常订单和人工介入节点。</p>
+        </div>
+        <div class="card">
+          <h3>会话与在线聊天</h3>
+          <p>买家消息、历史会话、在线 IM 一体化处理，适合自动处理和人工接管配合使用。</p>
+        </div>
+        <div class="card">
+          <h3>自动发货</h3>
+          <p>支持固定文本发货、库存卡密发货、接口取货发货，并可按商品灵活绑定。</p>
+        </div>
+        <div class="card">
+          <h3>免拼单自动发货</h3>
+          <p>收到免拼单相关卡片消息时，可自动调用免拼单发货接口，适合拼单商品的自动化交付场景。</p>
+        </div>
+        <div class="card">
+          <h3>发货流程编排</h3>
+          <p>支持等待回复、提取信息、API 联动、条件判断、失败分支、通知和标记发货。</p>
+        </div>
+        <div class="card">
+          <h3>自动回复</h3>
+          <p>支持普通自动回复规则，适合售前咨询、重复问题、固定话术和高频应答场景。</p>
+        </div>
+        <div class="card">
+          <h3>AI 知识库</h3>
+          <p>支持知识库增强回复，便于沉淀商品资料、常见问答、售后说明和标准话术。</p>
+        </div>
+        <div class="card">
+          <h3>返利挣钱 / 邀请推广</h3>
+          <p>支持邀请码推广、返利说明展示与联系二维码转化；可配合 7 天试用、1 个月 ¥7、半年 ¥35、1 年 ¥50、永久 ¥100 等授权方案销售，推广成交后按订单金额 30% 提成。</p>
+        </div>
+        <div class="card">
+          <h3>退款自动回复</h3>
+          <p>退款场景单独配置，不和普通自动回复混在一起，方便售后流程标准化处理。</p>
+        </div>
+        <div class="card">
+          <h3>移动端适配</h3>
+          <p>支持移动端菜单、卡片化展示与核心交互适配，手机端也能查看当前账号、菜单权限和关键业务页面。</p>
+        </div>
+        <div class="card">
+          <h3>一键擦亮 / 定时擦亮</h3>
+          <p>支持账号级一键擦亮和定时擦亮，适合持续运营活跃度维护和店铺曝光提升。</p>
+        </div>
+        <div class="card">
+          <h3>自动好评 / 自动评价</h3>
+          <p>支持系统级开关和账号级控制；开启后可自动处理评价提醒场景，适合在统一风控前提下做精细化自动好评管理。</p>
+        </div>
+        <div class="card">
+          <h3>消息通知</h3>
+          <p>支持通知渠道配置和账号绑定，便于处理异常提醒、登录问题和关键运行事件。</p>
+        </div>
+        <div class="card">
+          <h3>账号可用性告警</h3>
+          <p>内置重连失败告警和 Token 刷新失败告警，可按账号触发通知；重连连续失败达到 3 次会告警，Token 刷新在 10 分钟窗口内失败达到 3 次也会告警，同账号 3 小时内最多重复告警 1 次，并带自动保护动作。</p>
+        </div>
+        <div class="card">
+          <h3>备份恢复</h3>
+          <p>支持全量备份和恢复，方便迁移环境、重装系统、切换机器和保存运营数据。</p>
+        </div>
+        <div class="card">
+          <h3>授权管理</h3>
+          <p>支持在线许可证校验、运行凭证续签和正式分发场景下的授权状态控制。</p>
+        </div>
+        <div class="card">
+          <h3>日志与审计</h3>
+          <p>支持系统日志、安全审计和异常定位，便于排查发货失败、登录异常、返利处理和高权限操作记录。</p>
+        </div>
+        <div class="card">
+          <h3>多账号隔离 / 用户权限</h3>
+          <p>支持账号、自动回复、自动发货、知识库、通知渠道、发货流程等数据按用户归属隔离，普通用户仅能访问自己范围，超管可全局管理。</p>
         </div>
       </div>
     </section>
