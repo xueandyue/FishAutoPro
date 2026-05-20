@@ -457,6 +457,78 @@
       font-weight: 700;
     }
 
+    .ai-service-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .ai-dialog {
+      padding: 22px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, #102b35 0%, #1f3b45 100%);
+      color: #f8fafc;
+      display: grid;
+      gap: 14px;
+      overflow: hidden;
+    }
+
+    .chat-bubble {
+      max-width: 88%;
+      padding: 12px 14px;
+      border-radius: 16px;
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    .chat-bubble.buyer {
+      justify-self: start;
+      background: rgba(255, 255, 255, 0.10);
+      border: 1px solid rgba(255, 255, 255, 0.10);
+    }
+
+    .chat-bubble.ai {
+      justify-self: end;
+      background: #fff8e8;
+      color: #23313c;
+      border: 1px solid rgba(255, 255, 255, 0.20);
+    }
+
+    .ai-note {
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      color: rgba(248, 250, 252, 0.82);
+      font-size: 13px;
+    }
+
+    .ai-capability-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .ai-capability {
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.78);
+      border: 1px solid rgba(133, 99, 54, 0.12);
+    }
+
+    .ai-capability strong {
+      display: block;
+      margin-bottom: 6px;
+      color: #173b49;
+    }
+
+    .ai-capability p {
+      margin: 0;
+      color: #465061;
+      font-size: 14px;
+    }
+
     .metric-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -686,6 +758,7 @@
     @media (max-width: 980px) {
       .hero,
       .workflow-highlight,
+      .ai-service-layout,
       .download-wrap,
       .module-grid {
         grid-template-columns: 1fr;
@@ -735,6 +808,7 @@
       .hero-points,
       .grid.cols-3,
       .grid.cols-4,
+      .ai-capability-grid,
       .metric-grid,
       .gallery-grid {
         grid-template-columns: 1fr;
@@ -768,6 +842,7 @@
         <span>闲鱼自动化交付系统</span>
       </div>
       <nav class="nav">
+        <a href="#ai-service">AI 客服</a>
         <a href="#workflow">流程编排</a>
         <a href="#modules">功能模块</a>
         <a href="#coverage">能力全景</a>
@@ -779,11 +854,11 @@
 
     <section class="hero" id="top">
       <div class="hero-main">
-        <div class="eyebrow">闲鱼多账号运营自动化平台</div>
-        <h1>FishAutoPro 不只是自动发货，还能把整套业务流程自动跑起来</h1>
+        <div class="eyebrow">闲鱼多账号 AI 客服与自动交付平台</div>
+        <h1>FishAutoPro 让 AI 客服、自动发货和业务流程一起跑起来</h1>
         <p class="hero-lead">
           FishAutoPro 是一个面向闲鱼多账号运营的自动化管理平台，安装包不超过 40M，运行只占用 10 多 M 内存，能部署在路由器。
-          它既支持自动回复、自动发货、自动评价、自动免拼、自动擦亮，也支持可定制编排业务流程，适合长期稳定运营。
+          它不仅能自动发货，也能接入 OpenAI 兼容大模型，让 AI 基于商品详情、知识库、历史会话和订单信息回复买家。
         </p>
         <div class="hero-summary">
           <span>不超过 40M</span>
@@ -796,17 +871,19 @@
           <span class="price-chip">1 个月 ¥7</span>
           <span class="price-chip">半年 ¥35</span>
           <span class="price-chip">1 年 ¥50</span>
-          <span class="price-chip">永久 ¥100</span>
+          <span class="price-chip">
+            
+          </span>
         </div>
         <div class="hero-points">
-          <div>自动回复、图文回复、AI 知识库，售前售后都能自动处理</div>
+          <div>AI 客服可结合商品详情、知识库、历史会话和订单上下文回复买家</div>
           <div>自动发货支持多规格、免拼单自动发货、自动评价、自动擦亮</div>
           <div>支持等待回复、提取变量、API 联动、失败兜底的流程编排</div>
           <div>支持 Windows、macOS、Linux、OpenWrt、Docker 部署</div>
         </div>
         <div class="hero-actions">
           <a class="btn" href="#download">下载试用版</a>
-          <a class="btn-secondary" href="#workflow">查看流程编排能力</a>
+          <a class="btn-secondary" href="#ai-service">查看 AI 客服能力</a>
         </div>
       </div>
 
@@ -815,11 +892,11 @@
         <h2 class="side-title">功能、部署、推广、售后都已经考虑进来了</h2>
         <p class="side-desc">如果客户先看首屏，这里就能把大部分成交信息讲清楚。</p>
         <ul class="side-list">
-          <li>自动回复、自动发货、自动评价、自动免拼、自动擦亮，一套系统统一处理</li>
-          <li>支持图文回复聊天信息，也可接入 AI 大模型与 AI 知识库</li>
+          <li>AI 客服可按商品范围生效，支持绑定知识库、读取商品上下文和历史会话</li>
+          <li>买家连发多条消息可合并后再回复，减少碎片化、抢话式回复</li>
+          <li>人工介入后可自动暂停当前会话 AI，冷却后再恢复，避免人机同时回复</li>
           <li>支持移动端适配、多账号独立与权限隔离、账号可用性监控</li>
-          <li>支持推广返利提成，适合做试用转正、按月 / 年 / 永久授权销售</li>
-          <li>有售后，提供使用指导、问题修复和系统优化，不是卖完就结束</li>
+          <li>自动发货、评价、免拼、擦亮、通知和授权发行也在同一套系统里</li>
         </ul>
         <a class="btn-ghost" href="#modules">看完整功能清单</a>
       </aside>
@@ -850,6 +927,47 @@
         <div class="metric">
           <strong>轻量</strong>
           <span>非 Docker 版安装包不足 40M，运行内存约 20M，适合低成本长期挂载</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="ai-service">
+      <div class="section-head">
+        <h2>AI 客服不是简单套壳聊天，而是懂商品、懂订单、懂接管边界</h2>
+        <p>FishAutoPro 的 AI 回复围绕闲鱼客服场景设计：先知道卖什么、买家问过什么、订单处在哪一步，再决定要不要回复、怎么回复、什么时候交给人工。</p>
+      </div>
+      <div class="ai-service-layout">
+        <div class="ai-dialog">
+          <div class="chat-bubble buyer">买家：这个是全新的吗？今天拍能什么时候发？</div>
+          <div class="chat-bubble buyer">还有，能不能便宜点？</div>
+          <div class="chat-bubble ai">AI：这款目前是全新未拆，今天拍下一般可以当天安排。价格这边已经比较低了，如果你确定要，我可以帮你确认一下当前库存和发货时间。</div>
+          <div class="ai-note">连续消息会合并后再回复；回复会优先参考商品详情、知识库、卖家设定的话术和会话历史。</div>
+        </div>
+        <div class="ai-capability-grid">
+          <div class="ai-capability">
+            <strong>商品上下文自动补全</strong>
+            <p>可从商品详情同步 AI 上下文，并补充固定口径、发货说明、售后边界，让回复更贴近具体商品。</p>
+          </div>
+          <div class="ai-capability">
+            <strong>知识库增强回复</strong>
+            <p>把常见问题、教程、售后说明沉淀成知识库，自动回复规则可绑定知识库后再调用 AI。</p>
+          </div>
+          <div class="ai-capability">
+            <strong>历史会话和订单工具</strong>
+            <p>AI 回复前可加载历史对话；涉及发货、物流、售后时，可查询买家订单信息，减少编造风险。</p>
+          </div>
+          <div class="ai-capability">
+            <strong>人工接管更自然</strong>
+            <p>人工回复后自动暂停当前会话 AI，可设置冷却时间；对话页也支持手动接管和恢复 AI。</p>
+          </div>
+          <div class="ai-capability">
+            <strong>连续消息合并</strong>
+            <p>买家短时间连发多条消息时，系统可等待后合并处理，避免 AI 对每一句都单独回复。</p>
+          </div>
+          <div class="ai-capability">
+            <strong>静默保护</strong>
+            <p>遇到提示词探测、模型身份追问、平台卡片等不适合回复的内容，系统会静默跳过。</p>
+          </div>
         </div>
       </div>
     </section>
@@ -920,6 +1038,14 @@
       </div>
       <div class="module-grid">
         <div class="module-item">
+          <strong>AI 客服自动回复</strong>
+          <p>支持 OpenAI 兼容 API，可接入 DeepSeek、OpenAI、OpenRouter 等服务。AI 回复可结合商品上下文、知识库、历史会话和订单信息。</p>
+        </div>
+        <div class="module-item">
+          <strong>人工接管与安全边界</strong>
+          <p>人工回复后自动暂停 AI，也可在会话页手动接管或恢复；遇到提示词探测、模型身份追问等场景会静默跳过。</p>
+        </div>
+        <div class="module-item">
           <strong>多账号管理</strong>
           <p>集中管理多个闲鱼账号，查看登录状态、账号信息、自动好评设置，并支持一键擦亮和定时擦亮。</p>
         </div>
@@ -933,7 +1059,7 @@
         </div>
         <div class="module-item">
           <strong>自动回复 + AI 知识库</strong>
-          <p>支持普通自动回复与知识库增强回复，适合售前问答、重复问题答复和话术沉淀。</p>
+          <p>支持普通自动回复、图文回复和 AI 知识库增强回复，适合售前问答、重复问题答复和标准话术沉淀。</p>
         </div>
         <div class="module-item">
           <strong>退款自动回复</strong>
@@ -974,7 +1100,7 @@
         </div>
         <div class="card">
           <h3>会话与在线聊天</h3>
-          <p>买家消息、历史会话、在线 IM 一体化处理，适合自动处理和人工接管配合使用。</p>
+          <p>买家消息、历史会话、在线 IM 一体化处理，适合 AI 自动回复和人工接管配合使用。</p>
         </div>
         <div class="card">
           <h3>自动发货</h3>
@@ -990,11 +1116,19 @@
         </div>
         <div class="card">
           <h3>自动回复</h3>
-          <p>支持普通自动回复规则，适合售前咨询、重复问题、固定话术和高频应答场景。</p>
+          <p>支持普通自动回复、图文回复和 AI 回复规则，可按商品范围、关键词和知识库配置不同应答策略。</p>
         </div>
         <div class="card">
           <h3>AI 知识库</h3>
-          <p>支持知识库增强回复，便于沉淀商品资料、常见问答、售后说明和标准话术。</p>
+          <p>支持知识库增强回复，便于沉淀商品资料、常见问答、售后说明和标准话术，降低 AI 胡乱发挥的概率。</p>
+        </div>
+        <div class="card">
+          <h3>商品 AI 上下文</h3>
+          <p>支持从商品详情同步 AI 回复参考，也可手动维护固定口径、售后边界、议价规则和发货说明。</p>
+        </div>
+        <div class="card">
+          <h3>AI 接管控制</h3>
+          <p>人工回复后自动暂停 AI，支持冷却后恢复；买家连续消息可合并后处理，减少重复回复和人机冲突。</p>
         </div>
         <div class="card">
           <h3>返利挣钱 / 邀请推广</h3>
@@ -1060,6 +1194,10 @@
         <div class="card">
           <h3>资料 / 教程交付</h3>
           <p>按商品自动匹配不同交付链路，售前售后话术也可以一体化配置。</p>
+        </div>
+        <div class="card">
+          <h3>高频售前咨询</h3>
+          <p>商品成色、发货时间、售后范围、教程说明等重复问题，可由 AI 结合商品上下文和知识库先行回复。</p>
         </div>
         <div class="card">
           <h3>多店铺协同运营</h3>
@@ -1168,7 +1306,7 @@
 
     <footer class="footer">
       <div>FishAutoPro · 闲鱼自动化交付系统</div>
-      <div>重点能力：可定制编排业务流程、自动发货、自动回复、知识库、通知、授权与多端部署</div>
+      <div>重点能力：AI 客服自动回复、商品上下文、知识库、可定制流程、自动发货、通知、授权与多端部署</div>
       <div id="copyright"></div>
     </footer>
   </div>
