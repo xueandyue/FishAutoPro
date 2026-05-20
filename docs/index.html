@@ -871,9 +871,7 @@
           <span class="price-chip">1 个月 ¥7</span>
           <span class="price-chip">半年 ¥35</span>
           <span class="price-chip">1 年 ¥50</span>
-          <span class="price-chip">
-            
-          </span>
+          <span class="price-chip">永久 ¥100</span>
         </div>
         <div class="hero-points">
           <div>AI 客服可结合商品详情、知识库、历史会话和订单上下文回复买家</div>
@@ -1329,12 +1327,38 @@
       var lightboxImage = document.getElementById("lightbox-image");
       var lightboxCaption = document.getElementById("lightbox-caption");
       var lightboxClose = document.getElementById("lightbox-close");
+      var imageCacheVersion = String(Date.now());
 
       function setStatus(text) {
         if (statusEl) {
           statusEl.textContent = text;
         }
       }
+
+      function withCacheVersion(url) {
+        if (!url || !/\.(png|jpe?g|webp|gif)(\?|#|$)/i.test(url)) {
+          return url;
+        }
+        if (/[?&]v=/.test(url)) {
+          return url;
+        }
+        var hashIndex = url.indexOf("#");
+        var hash = "";
+        var base = url;
+        if (hashIndex >= 0) {
+          hash = url.slice(hashIndex);
+          base = url.slice(0, hashIndex);
+        }
+        return base + (base.indexOf("?") >= 0 ? "&" : "?") + "v=" + imageCacheVersion + hash;
+      }
+
+      document.querySelectorAll("img[src]").forEach(function (image) {
+        image.src = withCacheVersion(image.getAttribute("src"));
+      });
+
+      document.querySelectorAll("[data-full]").forEach(function (item) {
+        item.setAttribute("data-full", withCacheVersion(item.getAttribute("data-full")));
+      });
 
       function copyText(text) {
         if (!text) {
