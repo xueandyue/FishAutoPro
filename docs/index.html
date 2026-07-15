@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FishAutoPro - 闲鱼多账号 AI 客服、自动发货和流程编排工具，永久 ¥100</title>
-  <meta name="description" content="FishAutoPro 是面向闲鱼多账号运营的自动化管理平台，支持 AI 客服自动回复、自动发货、免拼单发货、订单会话管理、商品管理、知识库、流程编排、自动评价、自动擦亮和 Docker 部署。7 天试用，1 个月 ¥7，永久 ¥100。" />
-  <meta name="keywords" content="FishAutoPro, 闲鱼自动回复, 闲鱼自动发货, 闲鱼多账号, 闲鱼 AI 客服, 闲鱼自动评价, 闲鱼自动擦亮, 免拼单自动发货, 卡密发货, 自动交付, xianyu automation, auto reply, auto delivery" />
+  <title>FishAutoPro - 基础免费版、闲鱼 AI 客服、商品监控、自动发货与 Android App</title>
+  <meta name="description" content="FishAutoPro 提供可长期使用的基础免费版：1 个闲鱼账号可联网运行，并可执行基础自动回复和固定内容自动发货。授权版进一步提供 AI 客服、商品监控、自动下单、多数量发货、自动补货上架、库存与 API 发货、流程编排和多账号运营。支持在接入家庭网络的 Android 手机、Windows、macOS、Linux、OpenWrt、DD-WRT 与 Docker 设备上本地部署，从部署层面解决云服务器异地 IP 和多账号 IP 关联问题。" />
+  <meta name="keywords" content="FishAutoPro, FishAutoPro 基础免费版, 闲鱼家庭网络挂机, 闲鱼异地 IP, 闲鱼 IP 隔离, 闲鱼 IP 关联, 闲鱼本地部署, OpenWrt, DD-WRT, 闲鱼商品监控, 闲鱼自动下单, 闲鱼自动补货, Android App, 闲鱼商品发布, 闲鱼批量铺货, 闲鱼自动回复, 闲鱼自动发货, 多数量发货, 闲鱼多账号, 闲鱼 AI 客服, 免拼单自动发货, 卡密发货, 自动交付, xianyu automation, auto reply, auto delivery" />
   <style>
     :root {
       --bg: #f4efe6;
@@ -50,6 +50,10 @@
     img {
       display: block;
       max-width: 100%;
+    }
+
+    section[id] {
+      scroll-margin-top: 104px;
     }
 
     .page {
@@ -590,6 +594,265 @@
       color: #465061;
     }
 
+    .edition-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .edition-card {
+      position: relative;
+      overflow: hidden;
+      padding: 28px;
+      border: 1px solid rgba(15, 118, 110, 0.20);
+      border-radius: 24px;
+      background: linear-gradient(180deg, #ffffff 0%, #f6fbfa 100%);
+      box-shadow: 0 16px 36px rgba(15, 118, 110, 0.08);
+    }
+
+    .edition-card::before {
+      position: absolute;
+      inset: 0 0 auto;
+      height: 5px;
+      content: "";
+      background: linear-gradient(90deg, #0f766e, #2aa198);
+    }
+
+    .edition-card.pro {
+      border-color: rgba(180, 83, 9, 0.22);
+      background: linear-gradient(180deg, #ffffff 0%, #fff9ef 100%);
+      box-shadow: 0 16px 36px rgba(180, 83, 9, 0.08);
+    }
+
+    .edition-card.pro::before {
+      background: linear-gradient(90deg, #b45309, #e59a22);
+    }
+
+    .edition-label {
+      display: inline-flex;
+      padding: 6px 10px;
+      border-radius: 999px;
+      color: #0f665f;
+      background: #e8f7f4;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .edition-card.pro .edition-label {
+      color: #9a4f10;
+      background: #fff2df;
+    }
+
+    .edition-card h3 {
+      margin: 18px 0 4px;
+      color: #102b35;
+      font-size: 30px;
+      line-height: 1.2;
+    }
+
+    .edition-price {
+      display: block;
+      margin-top: 10px;
+      color: #0f766e;
+      font-size: 34px;
+      font-weight: 900;
+      line-height: 1.15;
+    }
+
+    .edition-card.pro .edition-price {
+      color: #b45309;
+      font-size: 26px;
+    }
+
+    .edition-intro {
+      min-height: 56px;
+      margin: 16px 0 20px;
+      color: var(--muted);
+    }
+
+    .edition-list {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      padding: 20px 0 0;
+      border-top: 1px solid rgba(133, 99, 54, 0.14);
+      list-style: none;
+    }
+
+    .edition-list li {
+      display: grid;
+      grid-template-columns: 24px minmax(0, 1fr);
+      gap: 10px;
+      align-items: start;
+      color: #263542;
+    }
+
+    .edition-list li::before {
+      display: inline-grid;
+      width: 22px;
+      height: 22px;
+      place-items: center;
+      border-radius: 50%;
+      content: "✓";
+      color: #fff;
+      background: #15938c;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .edition-card.pro .edition-list li::before {
+      background: #dd8a1c;
+    }
+
+    .edition-list li.boundary {
+      color: #5d6672;
+    }
+
+    .edition-list li.boundary::before {
+      content: "—";
+      color: #8b5d1f;
+      background: #fff0d5;
+    }
+
+    .edition-note {
+      margin: 18px 0 0;
+      padding: 14px 16px;
+      border-radius: 16px;
+      color: #4f5662;
+      background: rgba(255, 255, 255, 0.66);
+      border: 1px dashed rgba(133, 99, 54, 0.22);
+      font-size: 14px;
+    }
+
+    .release-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .release-card {
+      min-height: 214px;
+      padding: 20px;
+      border: 1px solid rgba(133, 99, 54, 0.13);
+      border-radius: 20px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(255, 249, 240, 0.82));
+    }
+
+    .release-no {
+      display: inline-grid;
+      width: 34px;
+      height: 34px;
+      place-items: center;
+      border-radius: 12px;
+      color: #fff;
+      background: linear-gradient(135deg, #155e75, #0f766e);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .release-card h3 {
+      margin: 16px 0 8px;
+      color: #173b49;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .release-card p {
+      margin: 0;
+      color: #53606d;
+      font-size: 14px;
+    }
+
+    .release-tag {
+      display: inline-flex;
+      margin-top: 14px;
+      padding: 5px 9px;
+      border-radius: 999px;
+      color: #96510f;
+      background: #fff0d8;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .release-tag.free {
+      color: #0f665f;
+      background: #e5f6f2;
+    }
+
+    .ip-callout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
+      gap: 22px;
+      margin-bottom: 18px;
+      padding: 26px;
+      border-radius: 24px;
+      color: #fff;
+      background:
+        radial-gradient(circle at 90% 10%, rgba(229, 154, 34, 0.28), transparent 42%),
+        linear-gradient(135deg, #123c4a 0%, #0f766e 100%);
+      box-shadow: 0 18px 42px rgba(15, 77, 93, 0.18);
+    }
+
+    .ip-kicker {
+      display: inline-flex;
+      padding: 5px 9px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 999px;
+      color: rgba(255, 255, 255, 0.84);
+      background: rgba(255, 255, 255, 0.08);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+    }
+
+    .ip-callout h3 {
+      margin: 14px 0 8px;
+      font-size: clamp(24px, 3vw, 34px);
+      line-height: 1.2;
+    }
+
+    .ip-callout p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.82);
+    }
+
+    .ip-platforms {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .ip-platforms span {
+      display: inline-flex;
+      padding: 7px 10px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 999px;
+      color: #fff;
+      background: rgba(255, 255, 255, 0.10);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .ip-strategy {
+      display: grid;
+      gap: 10px;
+      align-content: center;
+      padding: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .ip-strategy strong {
+      font-size: 18px;
+    }
+
+    .ip-strategy small {
+      color: rgba(255, 255, 255, 0.72);
+      line-height: 1.65;
+    }
+
     .download-wrap {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -770,19 +1033,26 @@
       .workflow-highlight,
       .ai-service-layout,
       .download-wrap,
-      .module-grid {
+      .module-grid,
+      .edition-grid,
+      .ip-callout {
         grid-template-columns: 1fr;
       }
 
       .grid.cols-3,
       .grid.cols-4,
       .metric-grid,
-      .gallery-grid {
+      .gallery-grid,
+      .release-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
 
     @media (max-width: 720px) {
+      section[id] {
+        scroll-margin-top: 18px;
+      }
+
       .page {
         width: min(calc(100% - 20px), var(--max));
         padding-top: 14px;
@@ -820,7 +1090,8 @@
       .grid.cols-4,
       .ai-capability-grid,
       .metric-grid,
-      .gallery-grid {
+      .gallery-grid,
+      .release-grid {
         grid-template-columns: 1fr;
       }
 
@@ -852,63 +1123,150 @@
         <span>闲鱼自动化交付系统</span>
       </div>
       <nav class="nav">
+        <a href="#editions">版本区别</a>
+        <a href="#whats-new">v2.6 新功能</a>
         <a href="#ai-service">AI 客服</a>
         <a href="#workflow">流程编排</a>
-        <a href="#modules">功能模块</a>
         <a href="#coverage">能力全景</a>
-        <a href="#scenes">适用场景</a>
-        <a href="#deploy">部署方式</a>
         <a href="#download" class="cta-mini">立即下载</a>
       </nav>
     </header>
 
     <section class="hero" id="top">
       <div class="hero-main">
-        <div class="eyebrow">7 天试用 · 1 个月 ¥7 · 永久 ¥100</div>
-        <h1>FishAutoPro 闲鱼多账号 AI 客服、自动发货和流程编排工具</h1>
+        <div class="eyebrow">基础免费版长期可用 · 7 天完整试用 · 永久 ¥120</div>
+        <h1>FishAutoPro 闲鱼 AI 客服、商品监控、自动发货和多端运营工具</h1>
         <p class="hero-lead">
-          FishAutoPro 面向闲鱼多账号运营，覆盖 AI 客服自动回复、商品/订单/会话管理、自动发货、免拼单发货、自动评价、自动擦亮、通知告警和授权管理。
-          支持接入 OpenAI 兼容大模型，让 AI 基于商品详情、知识库、历史会话和订单信息回复买家；也支持把等待回复、提取变量、API 联动、条件判断和失败兜底编排成自动交付流程。
+          基础免费版不是只能查看的演示版：1 个账号可以联网运行，并能真正执行文本或普通图片自动回复和固定内容自动发货。
+          授权版在此基础上解锁 AI 客服、商品监控与自动下单、多数量发货、自动补货上架、库存与 API 发货、流程编排和多账号运营；现在也提供 Android App 版本。
         </p>
         <div class="hero-summary">
+          <span>基础免费版</span>
+          <span>商品监控</span>
+          <span>自动补货</span>
+          <span>多数量发货</span>
           <span>AI 客服</span>
-          <span>自动发货</span>
-          <span>流程编排</span>
-          <span>多账号运营</span>
-          <span>轻量部署</span>
+          <span>Android App</span>
+          <span>家庭网络部署 / IP 隔离</span>
         </div>
-        <div class="price-strip" aria-label="授权价格">
+        <div class="price-strip" aria-label="版本和授权价格">
+          <span class="price-chip">基础版免费</span>
           <span class="price-chip">7 天试用</span>
-          <span class="price-chip">1 个月 ¥7</span>
-          <span class="price-chip">半年 ¥35</span>
-          <span class="price-chip">1 年 ¥50</span>
-          <span class="price-chip">永久 ¥100</span>
+          <span class="price-chip">1 个月 ¥8</span>
+          <span class="price-chip">半年 ¥40</span>
+          <span class="price-chip">1 年 ¥70</span>
+          <span class="price-chip">永久 ¥120</span>
         </div>
         <div class="hero-points">
-          <div>AI 客服可结合商品详情、知识库、历史会话和订单上下文回复买家</div>
-          <div>自动发货支持固定文本、库存卡密、接口取货和免拼单发货</div>
-          <div>流程编排支持等待回复、提取变量、API 联动、条件判断、失败兜底</div>
-          <div>安装包不足 40M，约 20M 内存，支持 Windows、macOS、Linux、OpenWrt、Docker</div>
+          <div>免费版可管理 1 个在线账号，查看商品、订单和日志，并运行基础自动回复与自动发货</div>
+          <div>商品监控支持上新与降价采集，可配置自动私信、自动下单和新品即拍</div>
+          <div>自动发货新增按订单购买数量交付，支持库存卡密、接口取货和流程联动</div>
+          <div>自动补货持续检测同标题商品，商品下架或售出后可按素材重新发布</div>
+          <div>轻量部署挂机：支持 Windows、macOS、Linux、OpenWrt、DD-WRT、Android 手机和 Docker 部署在不同家庭网络设备上，从部署根源解决 IP 关联和异地 IP 问题</div>
         </div>
         <div class="hero-actions">
-          <a class="btn" href="#download">下载试用版</a>
-          <a class="btn-secondary" href="#ai-service">查看 AI 客服能力</a>
+          <a class="btn" href="#download">免费下载使用</a>
+          <a class="btn-secondary" href="#editions">比较两个版本</a>
         </div>
       </div>
 
       <aside class="hero-side">
-        <span class="side-badge">主要能力 + 价格</span>
-        <h2 class="side-title">从售前咨询到下单交付，一套系统自动处理</h2>
-        <p class="side-desc">适合闲鱼虚拟商品、卡密资源、教程资料、代充业务、账号交付和多店铺客服场景。</p>
+        <span class="side-badge">v2.6 · 免费起步，按需升级</span>
+        <h2 class="side-title">先用基础自动化，再解锁完整经营能力</h2>
+        <p class="side-desc">免费版可长期使用基础功能；需要 AI、多账号、商品监控、自动补货或高级交付时再升级授权版。</p>
         <ul class="side-list">
-          <li>AI 客服：按商品范围生效，读取商品上下文、知识库、历史会话和订单信息</li>
-          <li>自动交付：自动发货、免拼单发货、卡密库存、接口取货、失败兜底</li>
-          <li>流程编排：等待买家回复、提取字段、调用 API、条件判断、通知人工</li>
-          <li>运营管理：多账号、商品、订单、会话、自动评价、自动擦亮、退款回复</li>
-          <li>价格透明：7 天试用，1 个月 ¥7，半年 ¥35，1 年 ¥50，永久 ¥100</li>
+          <li>基础免费版：1 个账号在线，商品和订单管理、文本日志、基础自动回复与固定内容自动发货</li>
+          <li>授权版：包含免费版全部能力，并开放 AI 客服、API 图片、知识库与会话工作台</li>
+          <li>经营自动化：商品发布、批量铺货、商品监控、自动下单、自动补货与自动擦亮</li>
+          <li>高级交付：库存卡密、API 取货、API 图片、多数量发货、免拼发货和流程编排</li>
+          <li>家庭网络挂机：支持 Android 手机、电脑、Docker、OpenWrt 和 DD-WRT 本地运行，避免账号长期使用云服务器异地 IP</li>
+          <li>价格透明：基础版免费；7 天完整试用，1 个月 ¥8，半年 ¥40，1 年 ¥70，永久 ¥120</li>
         </ul>
-        <a class="btn-ghost" href="#modules">看完整功能清单</a>
+        <a class="btn-ghost" href="#whats-new">查看 v2.6 新功能</a>
       </aside>
+    </section>
+
+    <section class="section" id="editions">
+      <div class="section-head">
+        <h2>基础免费版也能自动化，授权版解锁完整能力</h2>
+        <p>两个版本使用同一套客户端和数据。免费版适合先接入一个账号并运行基础业务；授权有效时，原有数据不变，直接开放多账号和高级模块。</p>
+      </div>
+      <div class="edition-grid">
+        <article class="edition-card">
+          <span class="edition-label">基础经营与基础自动化</span>
+          <h3>基础免费版</h3>
+          <span class="edition-price">免费</span>
+          <p class="edition-intro">不是纯演示版：一个账号可以联网运行，也可以真正执行基础自动回复和固定内容自动发货。</p>
+          <ul class="edition-list">
+            <li>查看账号在线状态、未读数、订单与金额统计</li>
+            <li>扫码或粘贴 Cookie 接入账号，免费版使用直连网络</li>
+            <li>账号启停、重启、刷新资料、编辑和删除；最多 1 个账号在线</li>
+            <li>商品同步、筛选搜索、XLSX 导出和批量下架</li>
+            <li>订单列表、详情、统计与 XLSX 导出</li>
+            <li>实时与历史文本日志、筛选搜索和导出</li>
+            <li>主题、菜单、访问地址、许可证、免责声明和返利推广</li>
+            <li>创建并运行精确匹配、关键词和正则表达式的文本或普通图片回复规则</li>
+            <li>新建、编辑、启停和删除固定内容自动发货规则，并由在线账号自动执行</li>
+            <li class="boundary">自动免拼不开放；AI 回复、API 图片、库存卡密、API 取货、多数量发货和自定义流程需授权</li>
+          </ul>
+        </article>
+
+        <article class="edition-card pro">
+          <span class="edition-label">持续经营与业务自动化</span>
+          <h3>授权版</h3>
+          <span class="edition-price">包含免费版全部能力</span>
+          <p class="edition-intro">在许可证有效期和账号额度内，开放主要业务模块、自动执行能力与高级管理。</p>
+          <ul class="edition-list">
+            <li>按许可证额度接入并同时运行多个账号，可配置账号代理和退款注销</li>
+            <li>基础自动回复之外，增加 AI 回复、API 图片、知识库和会话工作台</li>
+            <li>商品发布、批量铺货、商品监控、自动私信、自动下单和自动补货上架</li>
+            <li>完整订单拉取、同步、刷新、发货、删除和批量处理</li>
+            <li>基础自动发货之外，增加库存卡密、API/API 图片、多数量、免拼发货和流程编排</li>
+            <li>自动好评、求小红花、商品擦亮等持续运营能力</li>
+            <li>通知、备份、用户、邮件、安全审计与后台任务等高级管理能力</li>
+          </ul>
+          <p class="edition-note">7 天试用期间按授权版运行，可完整体验主要功能；试用结束后回到基础免费版，已有业务数据不会自动删除。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="whats-new">
+      <div class="section-head">
+        <h2>v2.6 五项重点新功能</h2>
+        <p>本次更新既增加了长期可用的免费入口，也补齐了商品发现、下单、交付、补货和 Android 移动端使用链路。</p>
+      </div>
+      <div class="release-grid">
+        <article class="release-card">
+          <span class="release-no">01</span>
+          <h3>多数量发货</h3>
+          <p>按订单购买数量计算需要交付的份数，适用于库存卡密和 API 取货等批量交付场景。</p>
+          <span class="release-tag">授权版</span>
+        </article>
+        <article class="release-card">
+          <span class="release-no">02</span>
+          <h3>基础免费版</h3>
+          <p>一个账号可联网运行，并开放商品、订单、日志、基础自动回复和固定内容自动发货。</p>
+          <span class="release-tag free">长期免费</span>
+        </article>
+        <article class="release-card">
+          <span class="release-no">03</span>
+          <h3>商品监控与自动下单</h3>
+          <p>按关键词监控上新或降价商品，可自动私信、自动下单，并支持新品命中后立即尝试拍下。</p>
+          <span class="release-tag">授权版</span>
+        </article>
+        <article class="release-card">
+          <span class="release-no">04</span>
+          <h3>Android App 版</h3>
+          <p>新增 Android App 运行方式，在手机端启动 FishAutoPro 后端和管理界面，方便移动查看与操作。</p>
+          <span class="release-tag free">多端支持</span>
+        </article>
+        <article class="release-card">
+          <span class="release-no">05</span>
+          <h3>自动补货上架</h3>
+          <p>按素材和精确标题定时检查在售商品；商品售出或下架后，可自动重新发布并记录补货日志。</p>
+          <span class="release-tag">授权版</span>
+        </article>
+      </div>
     </section>
 
     <section class="section">
@@ -927,7 +1285,7 @@
         </div>
         <div class="metric">
           <strong>多端</strong>
-          <span>支持 Windows、macOS、Linux、Docker 部署，适合本地和服务器场景</span>
+          <span>支持 Android App、Windows、macOS、Linux 和 Docker，兼顾移动端、本地与服务器</span>
         </div>
         <div class="metric">
           <strong>在线</strong>
@@ -935,7 +1293,11 @@
         </div>
         <div class="metric">
           <strong>轻量</strong>
-          <span>非 Docker 版安装包不足 40M，运行内存约 20M，适合低成本长期挂载</span>
+          <span>可在接入家庭网络的路由器、Android 手机、NAS 和树莓派挂机，解决云服务器异地 IP；不同家庭出口还可隔离账号 IP</span>
+        </div>
+        <div class="metric">
+          <strong>v2.6</strong>
+          <span>新增基础免费版、多数量发货、商品监控、Android App 和自动补货上架</span>
         </div>
       </div>
     </section>
@@ -1043,7 +1405,7 @@
     <section class="section" id="modules">
       <div class="section-head">
         <h2>当前版本重点功能模块</h2>
-        <p>这不是一个单功能工具，而是一套围绕闲鱼账号运营、自动交付、自动回复和授权发行整合起来的系统。</p>
+        <p>这不是一个单功能工具，而是一套围绕闲鱼账号运营、商品发布、自动交付、自动回复和授权发行整合起来的系统。</p>
       </div>
       <div class="module-grid">
         <div class="module-item">
@@ -1059,8 +1421,20 @@
           <p>集中管理多个闲鱼账号，查看登录状态、账号信息、自动好评设置，并支持一键擦亮和定时擦亮。</p>
         </div>
         <div class="module-item">
+          <strong>商品发布</strong>
+          <p>内置商品素材库和发布向导，支持图片上传、单个发布、批量发布、账号常用地址选择和发布日志追踪，适合多账号铺货与新品上架。</p>
+        </div>
+        <div class="module-item">
+          <strong>商品监控与自动下单</strong>
+          <p>支持上新和降价监控，可设置关键词、价格、采集周期与操作账号，并对命中商品自动私信或尝试下单。</p>
+        </div>
+        <div class="module-item">
+          <strong>自动补货上架</strong>
+          <p>按账号和商品素材创建补货任务，定时检查同标题在售商品；售出或下架后自动重新发布，并保留检查和发布日志。</p>
+        </div>
+        <div class="module-item">
           <strong>自动发货规则</strong>
-          <p>支持按商品配置自动发货规则，既能发固定内容，也能挂接发货流程与外部接口，并支持免拼单自动发货场景。</p>
+          <p>支持按商品配置自动发货规则，既能发固定内容，也能使用库存、外部接口和多数量交付，并支持免拼单自动发货场景。</p>
         </div>
         <div class="module-item">
           <strong>发货流程</strong>
@@ -1079,6 +1453,10 @@
           <p>订单、买家消息、在线会话统一查看，便于追踪发货进度和人工介入处理。</p>
         </div>
         <div class="module-item">
+          <strong>Android App</strong>
+          <p>新增 Android App 版，把 Go 后端与 Web 管理界面封装到手机端运行；同一套账号、规则和订单能力可按版本权益使用。</p>
+        </div>
+        <div class="module-item">
           <strong>系统通知</strong>
           <p>支持通知渠道与账号绑定，适合登录异常、Token 刷新失败、重要事件提醒。</p>
         </div>
@@ -1092,7 +1470,7 @@
     <section class="section" id="coverage">
       <div class="section-head">
         <h2>完整能力全景</h2>
-        <p>如果你是拿这页给客户做功能对比，这一部分更适合直接往下看。除了“发货流程”这个核心卖点外，FishAutoPro 现在已经覆盖了账号、商品、订单、消息、运营、授权和运维的整套能力。</p>
+        <p>如果你是拿这页给客户做功能对比，这一部分更适合直接往下看。除了“发货流程”这个核心卖点外，FishAutoPro 现在已经覆盖了账号、商品发布、商品管理、订单、消息、运营、授权和运维的整套能力。</p>
       </div>
       <div class="grid cols-4">
         <div class="card">
@@ -1100,8 +1478,8 @@
           <p>支持多账号集中管理，查看账号状态、登录信息、启停配置与账号级功能开关。</p>
         </div>
         <div class="card">
-          <h3>商品管理</h3>
-          <p>支持商品维度配置自动发货规则，适合一个店铺多商品、多交付逻辑并行管理。</p>
+          <h3>商品管理与发布</h3>
+          <p>支持商品维度配置自动发货规则，也支持素材管理、图片上传、单个/批量发布、账号地址选择和发布日志追踪。</p>
         </div>
         <div class="card">
           <h3>订单管理</h3>
@@ -1113,7 +1491,7 @@
         </div>
         <div class="card">
           <h3>自动发货</h3>
-          <p>支持固定文本发货、库存卡密发货、接口取货发货，并可按商品灵活绑定。</p>
+          <p>支持固定文本、库存卡密、接口取货与 API 图片发货，可按商品灵活绑定；授权版还支持按订单购买数量进行多份交付。</p>
         </div>
         <div class="card">
           <h3>免拼单自动发货</h3>
@@ -1141,15 +1519,23 @@
         </div>
         <div class="card">
           <h3>返利挣钱 / 邀请推广</h3>
-          <p>支持邀请码推广、返利说明展示与联系二维码转化；可配合 7 天试用、1 个月 ¥7、半年 ¥35、1 年 ¥50、永久 ¥100 等授权方案销售，推广成交后按订单金额 30% 提成。</p>
+          <p>支持邀请码推广、返利说明展示与联系二维码转化；可配合 7 天试用、1 个月 ¥8、半年 ¥40、1 年 ¥70、永久 ¥120 等授权方案销售，推广成交后按订单金额 30% 提成。</p>
         </div>
         <div class="card">
           <h3>退款自动回复</h3>
           <p>退款场景单独配置，不和普通自动回复混在一起，方便售后流程标准化处理。</p>
         </div>
         <div class="card">
-          <h3>移动端适配</h3>
-          <p>支持移动端菜单、卡片化展示与核心交互适配，手机端也能查看当前账号、菜单权限和关键业务页面。</p>
+          <h3>Android App / 移动端</h3>
+          <p>新增 Android App 版，并保留移动端菜单、卡片化展示与核心交互适配，手机端也能运行和管理 FishAutoPro。</p>
+        </div>
+        <div class="card">
+          <h3>商品监控 / 秒杀下单</h3>
+          <p>监控关键词商品的上新和降价，按价格与发布时间筛选后自动私信或尝试下单，适合抢拍和捡漏场景。</p>
+        </div>
+        <div class="card">
+          <h3>自动补货上架</h3>
+          <p>按素材定时检查同标题在售商品，商品售出、下架或不存在时自动重新发布，保持目标商品持续在售。</p>
         </div>
         <div class="card">
           <h3>一键擦亮 / 定时擦亮</h3>
@@ -1183,6 +1569,10 @@
           <h3>多账号隔离 / 用户权限</h3>
           <p>支持账号、自动回复、自动发货、知识库、通知渠道、发货流程等数据按用户归属隔离，普通用户仅能访问自己范围，超管可全局管理。</p>
         </div>
+        <div class="card">
+          <h3>家庭网络部署 / IP 隔离</h3>
+          <p>把程序部署在账号常用地区、接入家庭网络的电脑、路由器、Android 手机和 Docker 设备上，可解决云服务器异地 IP；将不同账号组放在不同家庭网络出口，可从根源隔离账号 IP。</p>
+        </div>
       </div>
     </section>
 
@@ -1205,6 +1595,10 @@
           <p>按商品自动匹配不同交付链路，售前售后话术也可以一体化配置。</p>
         </div>
         <div class="card">
+          <h3>批量铺货 / 新品上架</h3>
+          <p>先维护标题、描述、价格和图片素材，再选择一个或多个账号发布，适合多账号铺货和活动上新。</p>
+        </div>
+        <div class="card">
           <h3>高频售前咨询</h3>
           <p>商品成色、发货时间、售后范围、教程说明等重复问题，可由 AI 结合商品上下文和知识库先行回复。</p>
         </div>
@@ -1217,21 +1611,42 @@
 
     <section class="section" id="deploy">
       <div class="section-head">
-        <h2>部署和发行更成熟</h2>
-        <p>当前版本已经不只是“本地跑一下”的工具，还考虑了正式分发、容器部署、在线授权和后续运维。</p>
+        <h2>部署在不同家庭网络设备上，从根源解决 IP 关联和异地 IP</h2>
+        <p>只有把程序部署在账号常用地区、接入家庭网络的电脑、路由器或 Android 手机上，平台连接才会直接使用家庭网络出口；不同账号组再使用不同家庭网络，才能同时解决异地 IP 和账号 IP 关联问题。</p>
+      </div>
+      <div class="ip-callout">
+        <div>
+          <span class="ip-kicker">HOME NETWORK · LOCAL DEPLOYMENT</span>
+          <h3>把 FishAutoPro 部署在使用家庭网络的设备上</h3>
+          <p>账号直接使用常用地区的家庭宽带出口，不再经过异地云服务器 IP；需要隔离多组账号时，可分别部署到不同家庭网络，从部署架构上解决异地 IP 和 IP 关联问题。</p>
+          <div class="ip-platforms" aria-label="支持的本地部署平台">
+            <span>Windows</span>
+            <span>macOS</span>
+            <span>Linux</span>
+            <span>OpenWrt</span>
+            <span>DD-WRT</span>
+            <span>Android 手机</span>
+            <span>Docker</span>
+          </div>
+        </div>
+        <div class="ip-strategy">
+          <strong>为什么家庭网络更合适？</strong>
+          <p>业务程序直接运行在家庭网络设备上，平台连接使用当前家庭宽带出口，避免数据中心 IP、云服务器所在地与账号常用地区不一致的问题。</p>
+          <small>同一家庭网络下的多台设备通常仍共用一个公网 IP。若多组账号需要相互隔离，应分别使用不同家庭网络出口，或在授权版中为账号配置不同代理。</small>
+        </div>
       </div>
       <div class="grid cols-3">
         <div class="card">
-          <h3>部署成本更低</h3>
-          <p>非 Docker 版安装包不足 40M，常规运行内存约 20M，资源占用很轻，适合长期稳定运行。</p>
+          <h3>低成本长期挂机</h3>
+          <p>可安装在接入家庭网络的闲置电脑、Android 手机、路由器、NAS 和树莓派上，无需为每个实例额外购买高配置服务器。</p>
         </div>
         <div class="card">
-          <h3>多平台支持</h3>
-          <p>支持 Windows 包、macOS、Linux 二进制，以及 Docker 多架构镜像，适合个人电脑和服务器。</p>
+          <h3>七类本地部署环境</h3>
+          <p>支持 Windows、macOS、Linux、OpenWrt、DD-WRT、Android 手机和 Docker，覆盖桌面、移动端、路由器与服务器。</p>
         </div>
         <div class="card">
-          <h3>可部署在路由器等轻量设备</h3>
-          <p>除了电脑和云服务器，也适合部署在家里的路由器等轻量环境，能明显降低长期部署成本。也不用担心触发IP风控</p>
+          <h3>解决 IP 异地与关联</h3>
+          <p>家庭网络本地部署可解决云服务器异地 IP；将不同账号组放到不同家庭网络或独立代理出口，可避免长期共用同一个公网 IP。</p>
         </div>
         <div class="card">
           <h3>在线授权校验</h3>
@@ -1246,13 +1661,13 @@
 
     <section class="section" id="download">
       <div class="section-head">
-        <h2>下载试用与界面预览</h2>
-        <p>推荐优先使用夸克网盘下载，百度网盘作为备用通道。可以直接打开链接，也可以复制整段文案到对应 App 使用。</p>
+        <h2>免费下载、完整试用与界面预览</h2>
+        <p>下载后可长期使用基础免费版；7 天试用期间开放授权版主要能力。推荐优先使用夸克网盘，百度网盘作为备用通道。</p>
       </div>
       <div class="download-wrap">
         <div class="download-card">
           <h3>下载通道</h3>
-          <p class="download-note">当前提供 7 天试用版。如需正式版、业务流程定制或对接接口，可按实际业务继续扩展。</p>
+          <p class="download-note">当前客户端同时支持基础免费模式和 7 天完整试用；试用结束后仍可继续使用免费版基础功能。如需多账号和高级自动化，可购买授权。</p>
 
           <article class="download-source">
             <h4>夸克网盘</h4>
@@ -1315,7 +1730,7 @@
 
     <footer class="footer">
       <div>FishAutoPro · 闲鱼自动化交付系统</div>
-      <div>重点能力：AI 客服自动回复、商品上下文、知识库、可定制流程、自动发货、通知、授权与多端部署</div>
+      <div>基础免费版可长期使用 · 支持不同家庭网络本地部署，从根源解决 IP 关联与异地 IP · v2.6 新增商品监控、多数量发货、Android App 与自动补货上架</div>
       <div id="copyright"></div>
     </footer>
   </div>
