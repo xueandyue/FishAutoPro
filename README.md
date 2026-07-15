@@ -26,6 +26,6 @@ FishAutoPro 是面向闲鱼多账号运营的自动化管理平台，主打 **AI
 - 1 年：¥70
 - 永久：¥120
 
-## 在线预览
+🚀 在线预览(https://kayden.website/license-platform-php/site/index)
 
-🚀 [https://xueandyue.github.io/FishAutoPro/](https://xueandyue.github.io/FishAutoPro/)
+[https://xueandyue.github.io/FishAutoPro/](https://xueandyue.github.io/FishAutoPro/)
